@@ -93,14 +93,15 @@ public class ChunkManager : MonoBehaviour
     int chunkIndex;
     public void UpdateChunkIndex()
     {
-        if (progression == 0) chunkIndex = 0;
+        chunkIndex = progression;
 
-        else
-        {
-            chunkIndex = Random.Range(1, chunkPools.Length);
-        }
 
         progression++;
+
+        if(progression >= chunkPrefabs.Length)
+        {
+            progression = chunkPrefabs.Length - 1;
+        }
     }
 
     public Chunk GetChunk(int index)

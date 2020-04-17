@@ -638,6 +638,7 @@ MonoBehaviour:
   - {fileID: 5707605896823492032, guid: 5ac0a8c0fc80a6845b64a83b0f1e7c19, type: 3}
   - {fileID: 4072912292533952241, guid: 4d152003f364e33478ef7518bfd58bc0, type: 3}
   - {fileID: 4072912292533952241, guid: df7c275a4b5ef964c88a3bde353a31ac, type: 3}
+  - {fileID: 4072912292533952241, guid: a98b44e8728af424d917442551bb7565, type: 3}
   inactiveChunksParent: {fileID: 126725226}
   nextChunkIndex: 0
   currentSpeed: 0
@@ -997,7 +998,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
+  m_BackGroundColor: {r: 0.2830189, g: 0.27500892, b: 0.27100393, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
