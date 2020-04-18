@@ -11,6 +11,10 @@ public class InfectionWheel : MonoBehaviour
         Instance = this;
     }
 
+    public int wedgeAmount;
+
+    public int xDistance;
+
     public GameObject wedgeParentPrefab;
 
     public RectTransform wedgesParent;
@@ -19,11 +23,11 @@ public class InfectionWheel : MonoBehaviour
 
     public void Initialize()
     {
-        wedges = new Image[8];
-        for(int i = 0; i < 8; i++)
+        wedges = new Image[InfectionManager.Instance.maxInfection];
+        for(int i = 0; i < InfectionManager.Instance.maxInfection; i++)
         {
             wedges[i] = Instantiate(wedgeParentPrefab, wedgesParent.transform).GetComponentInChildren<Image>();
-            wedges[i].transform.parent.transform.localEulerAngles = new Vector3(0, 0, -45 * i);
+            wedges[i].transform.parent.GetComponent<RectTransform>().anchoredPosition += new Vector2(xDistance, 0) * i;
             wedges[i].sprite = InfectionManager.Instance.healthyWedge;
         }
     }

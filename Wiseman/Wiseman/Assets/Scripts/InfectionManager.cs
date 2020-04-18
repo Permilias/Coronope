@@ -27,15 +27,16 @@ public class InfectionManager : MonoBehaviour
 
     [Header("Infection")]
     public int infection;
+    public int maxInfection;
     public int sneezeInfectionAmount;
 
 
     public void GainInfection(int amount)
     {
         infection += amount;
-        if(infection > 8)
+        if(infection > maxInfection)
         {
-            infection = 8;
+            infection = maxInfection;
         }
 
         InfectionWheel.Instance.RefreshWedgeInfection();
