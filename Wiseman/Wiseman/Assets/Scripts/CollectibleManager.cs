@@ -11,6 +11,11 @@ public class CollectibleManager : MonoBehaviour
 
     public float shrinkingSpeed;
 
+    public int collectiblesPossessed;
+
+    public int gainMultiplierPerCollectible;
+
+
     private void Awake()
     {
         Instance = this;
@@ -28,17 +33,27 @@ public class CollectibleManager : MonoBehaviour
 
         dataToCollect = new List<CollectibleData>();
 
-        for(int i = 0; i < 2; i++)
+        for(int i = 0; i < config.configs.Length; i++)
         {
             dataToCollect.Add(new CollectibleData(config.configs[i]));
         }
     }
 
+    public void DropAllCollectibles()
+    {
+        ScoreManager.Instance.GainLivesSaved(gainMultiplierPerCollectible * collectiblesPossessed);
+
+        collectiblesPossessed = 0;
+
+        PlayerController.Instance.RefreshMovementValues();
+    }
+
     public void Collect(Collectible collectible)
     {
-        dataToCollect.Remove(collectible.data);
         collectible.transform.DOScale(Vector3.zero, shrinkingSpeed).SetEase(Ease.InBack, 1.5f);
         collectible.col.enabled = false;
+
+        collectiblesPossessed++;
 
         for(int i = 0; i < currentCollectibles.Count; i++)
         {
@@ -48,6 +63,10 @@ public class CollectibleManager : MonoBehaviour
             }
 
         }
+
+
+
+        PlayerController.Instance.RefreshMovementValues();
     }
 
     public CollectibleData placeholderData;

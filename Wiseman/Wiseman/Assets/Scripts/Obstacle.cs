@@ -15,6 +15,9 @@ public class Obstacle : MonoBehaviour
     ObstacleInfection infection;
     ObstacleSneezing sneezing;
 
+    public bool scores;
+    bool gaveScore;
+
     Vector3 basePos;
 
     private void Awake()
@@ -36,6 +39,11 @@ public class Obstacle : MonoBehaviour
 
     public void Initialize()
     {
+        if(scores)
+        {
+            gaveScore = false;
+        }
+
         transform.localPosition = basePos;
         active = false;
         if (randomizeRotation)
@@ -88,16 +96,20 @@ public class Obstacle : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+
         if (collision.gameObject.tag == "Player")
         {
             Collide(collision.GetContact(0));
+            if (infection) infection.GetHit();
+
+
         }
     }
 
     public void Collide(ContactPoint point)
     {
         print("colliding !");
-        Vector3 vel = point.normal * -20;
+        Vector3 vel = point.normal * -12;
         float xMult = 2.3f - Mathf.Abs(point.normal.x);
         Mathf.Clamp(xMult, 1f, 2.3f);
         vel.x *= xMult;
@@ -124,5 +136,14 @@ public class Obstacle : MonoBehaviour
             return;
         }
 
+        if (!scores) return;
+
+        if (gaveScore) return;
+
+        if(transform.position.z < PlayerController.Instance.transform.position.z)
+        {
+            gaveScore = true;
+            ScoreManager.Instance.GainLivesSaved(1);
+        }
     }
 }

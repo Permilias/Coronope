@@ -33,6 +33,7 @@ public class InfectionManager : MonoBehaviour
 
     public void GainInfection(int amount)
     {
+        ScoreManager.Instance.LooseLivesSaved(ScoreManager.Instance.currentGain);
         infection += amount;
         if(infection > maxInfection)
         {
@@ -98,6 +99,7 @@ public class InfectionManager : MonoBehaviour
 
     public void RepoolInfectionZone(InfectionZone zone)
     {
+        if (zone == null) return;
         zone.transform.parent = transform;
         zone.gameObject.SetActive(false);
         zonePool.Enqueue(zone);

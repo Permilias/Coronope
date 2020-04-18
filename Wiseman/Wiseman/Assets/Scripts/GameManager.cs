@@ -6,6 +6,8 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
+    public DifficultyConfig difficultyConfig;
+
     public float speedMultiplier;
 
     private void Awake()
@@ -25,5 +27,6 @@ public class GameManager : MonoBehaviour
 
         ChunkManager.Instance.Initialize();
 
+        PlayerController.Instance.RefreshMovementValues();
     }
 }

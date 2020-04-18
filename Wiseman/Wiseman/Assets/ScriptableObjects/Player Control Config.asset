@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb9c8ac1043011f4dbeec4dc32f657ec, type: 3}
   m_Name: Player Control Config
   m_EditorClassIdentifier: 
-  inputAcceleration: 500
-  smoothTime: 0.14
+  inputAcceleration: 6
+  smoothTime: 0.1
   leftInputs: 14010000
   rightInputs: 13010000
   upInputs: 11010000

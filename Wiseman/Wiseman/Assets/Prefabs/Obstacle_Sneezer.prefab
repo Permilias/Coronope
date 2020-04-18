@@ -66,6 +66,7 @@ MonoBehaviour:
   minMaxRotation: {x: 0, y: 0}
   symmetry: 0
   active: 0
+  scores: 1
 --- !u!114 &2992876015702112658
 MonoBehaviour:
   m_ObjectHideFlags: 0

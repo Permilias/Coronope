@@ -10,8 +10,10 @@ public class ChunkManager : MonoBehaviour
 
     public ChunksConfig config;
 
-    public GameObject[] chunkPrefabs;
+    ChunkPool[] startingChunkPools;
     ChunkPool[] chunkPools;
+    ChunkPool[] collectibleChunkPools;
+    ChunkPool[] dropChunkPools;
 
     public Transform inactiveChunksParent;
 
@@ -31,11 +33,32 @@ public class ChunkManager : MonoBehaviour
 
     public void Initialize()
     {
-        chunkPools = new ChunkPool[chunkPrefabs.Length];
-        for (int i = 0; i < chunkPrefabs.Length; i++)
+        startingChunkPools = new ChunkPool[config.startingChunks.Length];
+        chunkPools = new ChunkPool[config.normalChunks.Length];
+        collectibleChunkPools = new ChunkPool[config.collectibleChunks.Length];
+        dropChunkPools = new ChunkPool[config.dropChunks.Length];
+
+
+        for (int i = 0; i < config.startingChunks.Length; i++)
         {
-            chunkPools[i] = new ChunkPool(chunkPrefabs[i]);
+            startingChunkPools[i] = new ChunkPool(config.startingChunks[i]);
         }
+
+        for (int i = 0; i < config.normalChunks.Length; i++)
+        {
+            chunkPools[i] = new ChunkPool(config.normalChunks[i]);
+        }
+
+        for (int i = 0; i < config.collectibleChunks.Length; i++)
+        {
+            collectibleChunkPools[i] = new ChunkPool(config.collectibleChunks[i]);
+        }
+
+        for (int i = 0; i < config.dropChunks.Length; i++)
+        {
+            dropChunkPools[i] = new ChunkPool(config.dropChunks[i]);
+        }
+
 
         chunkParents = new Transform[3];
         currentChunks = new Chunk[3];
@@ -48,6 +71,8 @@ public class ChunkManager : MonoBehaviour
 
             GenerateNewChunk(i);
         }
+
+        
     }
 
     private void Update()
@@ -76,14 +101,27 @@ public class ChunkManager : MonoBehaviour
             currentChunks[parentIndex].Deactivate();
             currentChunks[parentIndex].gameObject.SetActive(false);
             currentChunks[parentIndex].transform.parent = inactiveChunksParent;
-            chunkPools[currentChunks[parentIndex].poolIndex].Requeue(currentChunks[parentIndex]);
+
+            switch(currentChunks[parentIndex].type)
+            {
+                case ChunkType.normal:
+                    chunkPools[currentChunks[parentIndex].poolIndex].Requeue(currentChunks[parentIndex]);
+                    break;
+                case ChunkType.starting:
+                    startingChunkPools[currentChunks[parentIndex].poolIndex].Requeue(currentChunks[parentIndex]);
+                    break;
+                case ChunkType.collectible:
+                    collectibleChunkPools[currentChunks[parentIndex].poolIndex].Requeue(currentChunks[parentIndex]);
+                    break;
+                case ChunkType.drop:
+                    dropChunkPools[currentChunks[parentIndex].poolIndex].Requeue(currentChunks[parentIndex]);
+                    break;
+            }
         }
 
 
-        UpdateChunkIndex();
-
-        currentChunks[parentIndex] = GetChunk(chunkIndex);
-        currentChunks[parentIndex].Initialize(chunkIndex);
+        currentChunks[parentIndex] = GetChunk();
+        currentChunks[parentIndex].Initialize();
         currentChunks[parentIndex].gameObject.SetActive(true);
         currentChunks[parentIndex].transform.parent = chunkParents[parentIndex];
         currentChunks[parentIndex].transform.localPosition = Vector3.zero;
@@ -91,21 +129,74 @@ public class ChunkManager : MonoBehaviour
 
     int progression;
     int chunkIndex;
-    public void UpdateChunkIndex()
+    int collectibleCount;
+    int dropCount;
+
+    public Chunk GetChunk()
     {
-        chunkIndex = progression;
+        Chunk returned;
+
+        if (progression < startingChunkPools.Length)
+        {
+            returned = startingChunkPools[progression].Dequeue();
+            returned.type = ChunkType.starting;
+            returned.poolIndex = progression;
+        }
+        else
+        {
+
+            if(dropCount >= config.dropChunkDelayCount)
+            {
+                int index = Random.Range(0, dropChunkPools.Length);
+                returned = dropChunkPools[index].Dequeue();
+                dropCount = 0;
+
+                returned.poolIndex = index;
+                returned.type = ChunkType.drop;
+            }
+            else if(collectibleCount >= config.collectibleChunkDelayCount)
+            {
+                dropCount++;
+                int rand = Random.Range(0, config.collectibleChunkOdds);
+                if(rand == 0)
+                {
+                    int index = Random.Range(0, collectibleChunkPools.Length);
+                    returned = collectibleChunkPools[index].Dequeue();
+                    collectibleCount = 0;
+
+                    returned.poolIndex = index;
+                    returned.type = ChunkType.collectible;
+
+                }
+                else
+                {
+                    int index = Random.Range(0, chunkPools.Length);
+                    returned = chunkPools[index].Dequeue();
+
+
+                    returned.poolIndex = index;
+                    returned.type = ChunkType.normal;
+
+                }
+
+            }
+            else
+            {
+                dropCount++;
+                int index = Random.Range(0, chunkPools.Length);
+
+                collectibleCount++;
+                returned = chunkPools[index].Dequeue();
+
+                returned.poolIndex = index;
+                returned.type = ChunkType.normal;
+
+            }
+        }
 
 
         progression++;
 
-        if(progression >= chunkPrefabs.Length)
-        {
-            progression = chunkPrefabs.Length - 1;
-        }
-    }
-
-    public Chunk GetChunk(int index)
-    {
-        return chunkPools[index].Dequeue();
+        return returned;
     }
 }

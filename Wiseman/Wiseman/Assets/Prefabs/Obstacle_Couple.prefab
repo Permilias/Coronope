@@ -274,6 +274,8 @@ MonoBehaviour:
   minMaxRotation: {x: 0, y: 0}
   symmetry: 0
   active: 0
+  scores: 1
+  gaveScore: 0
 --- !u!114 &5998928905775666473
 MonoBehaviour:
   m_ObjectHideFlags: 0

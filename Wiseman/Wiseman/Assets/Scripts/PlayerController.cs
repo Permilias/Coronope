@@ -31,8 +31,7 @@ public class PlayerController : MonoBehaviour
         SpeedUpdate();
 
         targetVel = currentSpeed;
-        targetVel *= Time.deltaTime;
-        currentVel = Vector3.SmoothDamp(currentVel, targetVel, ref velRef, config.smoothTime);
+        currentVel = Vector3.SmoothDamp(currentVel, targetVel, ref velRef, smoothTime);
 
         rb.velocity = currentVel;
 
@@ -40,6 +39,16 @@ public class PlayerController : MonoBehaviour
         {
             transform.position = new Vector3(transform.position.x, transform.position.y, -1.901f);
         }
+    }
+
+    public float accelerationSpeed;
+    public float smoothTime;
+    public void RefreshMovementValues()
+    {
+        accelerationSpeed = config.inputAcceleration + (CollectibleManager.Instance.collectiblesPossessed * GameManager.Instance.difficultyConfig.addedSpeedPerItem);
+        if (accelerationSpeed >= GameManager.Instance.difficultyConfig.maxSpeed) accelerationSpeed = GameManager.Instance.difficultyConfig.maxSpeed;
+        smoothTime = config.smoothTime + (CollectibleManager.Instance.collectiblesPossessed * GameManager.Instance.difficultyConfig.addedSmoothTimePerItem);
+        if (smoothTime >= GameManager.Instance.difficultyConfig.maxSmoothTime) smoothTime = GameManager.Instance.difficultyConfig.maxSmoothTime;
     }
 
     bool leftHeld;
@@ -100,7 +109,7 @@ public class PlayerController : MonoBehaviour
 
         currentSpeed = currentAcceleration;
         currentSpeed.Normalize();
-        currentSpeed *= config.inputAcceleration;
+        currentSpeed *= accelerationSpeed;
 
     }
 }

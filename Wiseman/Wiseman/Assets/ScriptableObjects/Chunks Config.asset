@@ -14,3 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chunkSize: 80
   baseSpeed: 5
+  dropChunkDelayCount: 20
+  collectibleChunkDelayCount: 5
+  collectibleChunkOdds: 2
+  startingChunks:
+  - {fileID: 5981182719764068892, guid: 95cd5785bc0e66041914b8d8cef0e2d0, type: 3}
+  - {fileID: 5707605896823492032, guid: 5ac0a8c0fc80a6845b64a83b0f1e7c19, type: 3}
+  - {fileID: 4072912292533952241, guid: 4d152003f364e33478ef7518bfd58bc0, type: 3}
+  normalChunks:
+  - {fileID: 4072912292533952241, guid: a98b44e8728af424d917442551bb7565, type: 3}
+  collectibleChunks:
+  - {fileID: 4072912292533952241, guid: df7c275a4b5ef964c88a3bde353a31ac, type: 3}
+  dropChunks:
+  - {fileID: 4225797995198910817, guid: 11263837a9c2dbf49a3b1e383b879718, type: 3}

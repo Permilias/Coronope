@@ -6,6 +6,8 @@ public class Chunk : MonoBehaviour
 {
     public int poolIndex;
 
+    public ChunkType type;
+
     Obstacle[] obstacles;
     Collectible[] collectibles;
     ChunkSideDecorumGenerator decorum;
@@ -17,9 +19,8 @@ public class Chunk : MonoBehaviour
         decorum = GetComponentInChildren<ChunkSideDecorumGenerator>();
     }
 
-    public void Initialize(int _poolIndex)
+    public void Initialize()
     {
-        poolIndex = _poolIndex;
 
         for (int i = 0; i < obstacles.Length; i++)
         {
@@ -53,4 +54,12 @@ public class Chunk : MonoBehaviour
         GetComponentInChildren<ChunkSideDecorumGenerator>().Deactivate();
     }
 
+}
+
+public enum ChunkType
+{
+    starting,
+    normal,
+    collectible,
+    drop
 }

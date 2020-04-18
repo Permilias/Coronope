@@ -19,6 +19,8 @@ public class ObstacleMovement : MonoBehaviour
     public void Move()
     {
         if (!obstacle.active) return;
+
+        currentSpeed = baseSpeed * GameManager.Instance.speedMultiplier;
         transform.position += transform.forward * currentSpeed * Time.deltaTime;
     }
 
