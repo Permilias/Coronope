@@ -88,7 +88,15 @@ public class ChunkManager : MonoBehaviour
             if(chunkParents[i].position.z <= -config.chunkSize*2)
             {
                 float leftOver = -config.chunkSize * 2 - chunkParents[i].position.z;
-                chunkParents[i].position = new Vector3(0, 0, config.chunkSize + leftOver);
+                if(i == 0)
+                {
+                    chunkParents[i].position = chunkParents[2].position + new Vector3(0, 0, config.chunkSize);
+                }
+                else
+                {
+                    chunkParents[i].position = chunkParents[i-1].position + new Vector3(0, 0, config.chunkSize);
+                }
+
                 GenerateNewChunk(i);
             }
         }

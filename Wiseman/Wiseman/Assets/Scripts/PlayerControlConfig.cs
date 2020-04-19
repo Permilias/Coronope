@@ -8,6 +8,10 @@ public class PlayerControlConfig : ScriptableObject
     public float inputAcceleration;
     public float smoothTime;
 
+    public float stunSpeed;
+    public float stunSmooth;
+    public float stunDuration;
+
     public KeyCode[] leftInputs;
     public KeyCode[] rightInputs;
     public KeyCode[] upInputs;

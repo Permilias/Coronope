@@ -6,6 +6,7 @@ public class PlayerAnimation : MonoBehaviour
 {
     public static PlayerAnimation Instance;
 
+    public GameObject stunStars;
 
     Animator anim;
     private void Awake()
@@ -13,6 +14,8 @@ public class PlayerAnimation : MonoBehaviour
         Instance = this;
 
         anim = GetComponent<Animator>();
+
+        stunStars.SetActive(false);
     }
 
     public void SetStreet()

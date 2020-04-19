@@ -108,6 +108,7 @@ public class Obstacle : MonoBehaviour
 
     public void Collide(ContactPoint point)
     {
+        PlayerController.Instance.Stun();
         print("colliding !");
         Vector3 vel = point.normal * -12;
         float xMult = 2.3f - Mathf.Abs(point.normal.x);

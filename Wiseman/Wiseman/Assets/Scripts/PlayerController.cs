@@ -26,12 +26,21 @@ public class PlayerController : MonoBehaviour
     Vector3 velRef;
     private void Update()
     {
+        if(stunCount > 0f)
+        {
+            stunCount -= Time.deltaTime;
+            if(stunCount <= 0f)
+            {
+                Unstun();
+            }
+        }
+
         InputUpdate();
 
         SpeedUpdate();
 
         targetVel = currentSpeed;
-        currentVel = Vector3.SmoothDamp(currentVel, targetVel, ref velRef, smoothTime);
+        currentVel = Vector3.SmoothDamp(currentVel, targetVel, ref velRef, smoothTime + stunSmooth);
 
         rb.velocity = currentVel;
 
@@ -109,7 +118,27 @@ public class PlayerController : MonoBehaviour
 
         currentSpeed = currentAcceleration;
         currentSpeed.Normalize();
-        currentSpeed *= accelerationSpeed;
+        currentSpeed *= accelerationSpeed + stunSpeed;
 
     }
+
+    float stunSpeed;
+    float stunSmooth;
+    float stunCount;
+
+    public void Stun()
+    {
+        stunSpeed = config.stunSpeed;
+        stunSmooth = config.stunSmooth;
+        stunCount = config.stunDuration;
+        PlayerAnimation.Instance.stunStars.SetActive(true);
+    }
+
+    public void Unstun()
+    {
+        stunSpeed = 0f;
+        stunSmooth = 0f;
+        PlayerAnimation.Instance.stunStars.SetActive(false);
+    }
+
 }

@@ -14,6 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inputAcceleration: 6
   smoothTime: 0.1
+  stunSpeed: -2
+  stunSmooth: 0.3
+  stunDuration: 2
   leftInputs: 14010000
   rightInputs: 13010000
   upInputs: 11010000
