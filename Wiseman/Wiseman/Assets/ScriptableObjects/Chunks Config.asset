@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c28201086165090478109ec95ac1b16f, type: 3}
   m_Name: Chunks Config
   m_EditorClassIdentifier: 
-  chunkSize: 80
+  chunkSize: 84
   baseSpeed: 5
   dropChunkDelayCount: 20
   collectibleChunkDelayCount: 5
