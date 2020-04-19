@@ -29,7 +29,8 @@ public class InfectionManager : MonoBehaviour
     public int infection;
     public int maxInfection;
     public int sneezeInfectionAmount;
-
+    public Color infectionMessageColor;
+    public float infectionMessageHeight;
 
     public void GainInfection(int amount)
     {

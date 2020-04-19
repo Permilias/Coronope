@@ -27,10 +27,19 @@ public class ObstacleInfection : MonoBehaviour
     {
         if(InfectionManager.Instance.infection >= 1)
         {
-            if (!infected) infected = true;
-
+            if (!infected)
+            {
+                GetInfected();
+            }
         }
+    }
 
+    public void GetInfected()
+    {
+        ScoreManager.Instance.LooseLivesSaved(2);
+        ScoreManager.Instance.ResetCurrentGain();
+        FXPlayer.Instance.PlayTextMessage(transform, InfectionManager.Instance.infectionMessageColor, "Infected !!", InfectionManager.Instance.infectionMessageHeight);
+        infected = true;
     }
 
     public void Initialize()

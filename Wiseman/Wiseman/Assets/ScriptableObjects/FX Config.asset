@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fa18b42ea985b84d99e5ccae43db9e4, type: 3}
+  m_Name: FX Config
+  m_EditorClassIdentifier: 
+  fxs:
+  - fxName: TextMessage
+    fx: {fileID: 205232041599168167, guid: 1373d907330bd504399de770ae80db7b, type: 3}
+    poolingAmount: 5
+    duration: 0
+    randomizeSize: 0
+    minMaxSize: {x: 0, y: 0}
+    randomizeRotation: 0
+  textMessageEnterSpeed: 0.15
+  textMessageEnterEase: 27
+  textMessageDuration: 0.8
+  textMessageExitSpeed: 0.2
+  textMessageExitEase: 26
+  textMessageExitHeight: 1

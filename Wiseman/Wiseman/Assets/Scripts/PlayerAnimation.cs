@@ -27,11 +27,11 @@ public class PlayerAnimation : MonoBehaviour
 
     public void TurnToStreet()
     {
-        anim.SetTrigger("turnToStreet");
+        anim.SetBool("facingCamera", false);
     }
 
     public void TurnToCamera()
     {
-        anim.SetTrigger("turnToCamera");
+        anim.SetBool("facingCamera", true);
     }
 }
