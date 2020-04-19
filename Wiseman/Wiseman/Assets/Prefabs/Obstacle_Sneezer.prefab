@@ -80,6 +80,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   infectionDiameter: 3
+  startsInfected: 0
+  infected: 0
   zone: {fileID: 0}
 --- !u!114 &4474475971052508849
 MonoBehaviour:
@@ -93,10 +95,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06b52fd757cec004685e3f195c7863cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  telegraphDuration: 1
-  sneezingDuration: 1
-  delay: 1
-  size: 4
+  telegraphDuration: 2
+  sneezingDuration: 0.3
+  delay: 2
+  size: 3
 --- !u!1 &4474475971142200341
 GameObject:
   m_ObjectHideFlags: 0

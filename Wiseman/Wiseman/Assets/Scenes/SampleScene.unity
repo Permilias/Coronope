@@ -1916,7 +1916,8 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1285555843}
   m_Father: {fileID: 881374098}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 53.995003, y: 0, z: 0}
@@ -2304,6 +2305,56 @@ RectTransform:
   m_AnchoredPosition: {x: -81, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1285555842
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1285555843}
+  - component: {fileID: 1285555844}
+  m_Layer: 0
+  m_Name: GroceryDisplay
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1285555843
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1285555842}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1642243079}
+  m_Father: {fileID: 963194228}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1285555844
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1285555842}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37ee03c81747c2345911428f4c98e5f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  displayedGroceries: []
+  displayedObjects: []
+  displayedParents: []
+  displayParentDistance: -0.04
+  parent: {fileID: 1642243078}
+  baseParent: {fileID: 2541991758573775613}
 --- !u!1 &1327461416
 GameObject:
   m_ObjectHideFlags: 0
@@ -2756,6 +2807,37 @@ MonoBehaviour:
   sneezeInfectionAmount: 2
   infectionMessageColor: {r: 0.1917141, g: 0.754717, b: 0, a: 1}
   infectionMessageHeight: 3
+--- !u!1 &1642243078
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1642243079}
+  m_Layer: 0
+  m_Name: GroceryDisplayObjectsParent
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1642243079
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1642243078}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 2541991758573775614}
+  m_Father: {fileID: 1285555843}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1697541991
 GameObject:
   m_ObjectHideFlags: 0
@@ -3642,6 +3724,36 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 528efe4113514d9438054acd8a490625, type: 3}
+--- !u!1 &2541991758573775613
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2541991758573775614}
+  m_Layer: 0
+  m_Name: GroceryDisplayObjectParent
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2541991758573775614
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2541991758573775613}
+  m_LocalRotation: {x: -0.52643496, y: 0.6129625, z: 0.121282205, w: 0.5765708}
+  m_LocalPosition: {x: 0.588, y: 0.259, z: 0.614}
+  m_LocalScale: {x: 0.022853, y: 0.022853, z: 0.022853}
+  m_Children: []
+  m_Father: {fileID: 1642243079}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -49.090004, y: 117.829, z: -50.527004}
 --- !u!1001 &3059856534909073027
 PrefabInstance:
   m_ObjectHideFlags: 0
