@@ -46,6 +46,8 @@ public class CollectibleManager : MonoBehaviour
         collectiblesPossessed = 0;
 
         PlayerController.Instance.RefreshMovementValues();
+
+        GroceryDisplay.Instance.RemoveAllDisplays();
     }
 
     public void Collect(Collectible collectible)
@@ -64,7 +66,7 @@ public class CollectibleManager : MonoBehaviour
 
         }
 
-
+        GroceryDisplay.Instance.AddDisplay(collectible.data);
 
         PlayerController.Instance.RefreshMovementValues();
     }

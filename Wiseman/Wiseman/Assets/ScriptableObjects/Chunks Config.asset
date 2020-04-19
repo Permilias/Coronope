@@ -22,6 +22,7 @@ MonoBehaviour:
   - {fileID: 5707605896823492032, guid: 5ac0a8c0fc80a6845b64a83b0f1e7c19, type: 3}
   - {fileID: 4072912292533952241, guid: 4d152003f364e33478ef7518bfd58bc0, type: 3}
   - {fileID: 4120440157645733987, guid: 6cefe6bc151a623469ec7eae5d77b87c, type: 3}
+  - {fileID: 8550121037987537402, guid: 3be467bb2a57b93468b3e07b05c3cb7a, type: 3}
   normalChunks:
   - {fileID: 4072912292533952241, guid: a98b44e8728af424d917442551bb7565, type: 3}
   collectibleChunks:

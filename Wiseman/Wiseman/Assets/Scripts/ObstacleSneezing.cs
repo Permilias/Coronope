@@ -30,7 +30,7 @@ public class ObstacleSneezing : MonoBehaviour
         {
             //wait
             case 0:
-                if(count >= delay)
+                if(count >= delay / GameManager.Instance.speedMultiplier)
                 {
                     count = 0f;
                     phase = 1;
@@ -39,7 +39,7 @@ public class ObstacleSneezing : MonoBehaviour
                 break;
             //charge
             case 1:
-                if (count >= telegraphDuration)
+                if (count >= telegraphDuration / GameManager.Instance.speedMultiplier)
                 {
                     count = 0f;
                     phase = 2;
@@ -49,7 +49,7 @@ public class ObstacleSneezing : MonoBehaviour
                 break;
             //sneeze
             case 2:
-                if (count >= sneezingDuration)
+                if (count >= sneezingDuration / GameManager.Instance.speedMultiplier)
                 {
                     count = 0f;
                     phase = 0;
