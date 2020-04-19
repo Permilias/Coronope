@@ -15,6 +15,11 @@ MonoBehaviour:
   decorumObjects:
   - {fileID: 7174519026408034474, guid: ef3ab30829e301e4b8e7225d71799c44, type: 3}
   - {fileID: 1354271451132333902, guid: 528efe4113514d9438054acd8a490625, type: 3}
+  - {fileID: 1354271451132333902, guid: 52bde5fe48e3fab43be4d672a7cb0909, type: 3}
+  - {fileID: 1354271451132333902, guid: 5593c4894fe63ea42be1a13c500fd945, type: 3}
+  - {fileID: 1354271451132333902, guid: 0eb54e576a97c2549a3fe91c892ed646, type: 3}
+  - {fileID: 1354271451132333902, guid: 1240d9e0f3882394aa6a316f7f1728c9, type: 3}
+  - {fileID: 1354271451132333902, guid: 67a443408e2902848b113bda3c0bf3c2, type: 3}
   decorumDistanceFromCenter: 9
   decorumDistanceFromEachOther: 7
   poolAmount: 20
