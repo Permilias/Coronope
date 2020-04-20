@@ -65,6 +65,8 @@ public class GroceryDisplay : MonoBehaviour
         {
             for(int i = displayedCount-1; i >= count; i--)
             {
+                displayedObjects[i].SetActive(false);
+               
                 displayedObjects.RemoveAt(i);
             }
         }

@@ -38,7 +38,25 @@ public class MusicManager : MonoBehaviour
         {
             PlayMusic(startingMusicIndex);
         }
+
+        delay = CurrentPlayingSource().clip.length;
     }
+
+    private void Update()
+    {
+        if(CurrentPlayingSourceIndex() == 1)
+        {
+            return;
+        }
+
+        delay -= Time.deltaTime;
+        if(delay <= 0f)
+        {
+            PlayMusic(1);
+        }
+    }
+
+    float delay;
 
     public bool MusicPlaying()
     {
@@ -87,6 +105,10 @@ public class MusicManager : MonoBehaviour
 
     public void PlayMusic(int index)
     {
+        if(MusicPlaying())
+        {
+            CurrentPlayingSource().Stop();
+        }
         sources[index].Play();
         sources[index].volume = musics[index].baseVolume * musicVolume;
     }
