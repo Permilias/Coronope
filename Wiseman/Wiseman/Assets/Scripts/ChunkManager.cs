@@ -139,12 +139,19 @@ public class ChunkManager : MonoBehaviour
     int chunkIndex;
     int collectibleCount;
     int dropCount;
+    public bool enableStartingChunks;
+    bool startingChunks;
 
     public Chunk GetChunk()
     {
         Chunk returned;
 
-        if (progression < startingChunkPools.Length)
+        startingChunks = false;
+
+        if (enableStartingChunks) startingChunks = true;
+        if (progression == 0) startingChunks = true;
+
+        if (progression < startingChunkPools.Length && startingChunks)
         {
             returned = startingChunkPools[progression].Dequeue();
             returned.type = ChunkType.starting;
