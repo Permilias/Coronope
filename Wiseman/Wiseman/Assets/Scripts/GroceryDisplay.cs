@@ -44,6 +44,7 @@ public class GroceryDisplay : MonoBehaviour
     public void RemoveAllDisplays()
     {
         displayedGroceries = new List<CollectibleData>();
+        displayedObjects = new List<GameObject>();
         RefreshDisplays();
     }
 

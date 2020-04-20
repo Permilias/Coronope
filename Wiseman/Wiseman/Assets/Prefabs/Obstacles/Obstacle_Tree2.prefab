@@ -45,8 +45,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd967af68b105e840bc5a5927296c41e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  randomizeRotation: 0
-  minMaxRotation: {x: 0, y: 0}
+  randomizeRotation: 1
+  minMaxRotation: {x: 0, y: 360}
   symmetry: 0
   active: 0
   scores: 0
