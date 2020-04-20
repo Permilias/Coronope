@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        MusicManager.Instance.Initialize();
         FXPlayer.Instance.Initialize();
         CollectibleManager.Instance.Initialize();
 

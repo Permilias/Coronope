@@ -96,9 +96,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   telegraphDuration: 2
-  sneezingDuration: 0.3
-  delay: 2
-  size: 3
+  sneezingDuration: 0.2
+  delay: 1.5
+  size: 2
 --- !u!1 &4474475971142200341
 GameObject:
   m_ObjectHideFlags: 0

@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chunkSize: 70
   baseSpeed: 5
-  dropChunkDelayCount: 20
-  collectibleChunkDelayCount: 5
+  dropChunkDelayCount: 10
+  collectibleChunkDelayCount: 3
   collectibleChunkOdds: 2
   startingChunks:
   - {fileID: 5981182719764068892, guid: 95cd5785bc0e66041914b8d8cef0e2d0, type: 3}
