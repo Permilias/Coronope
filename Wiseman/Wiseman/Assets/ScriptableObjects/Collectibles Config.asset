@@ -17,20 +17,23 @@ MonoBehaviour:
     graphicsPrefab: {fileID: 4515415137237394455, guid: db88526bc14d7db44be92c897b8e0981,
       type: 3}
   - collectibleName: Apple
-    graphicsPrefab: {fileID: 4515415137237394455, guid: 1349e8eed00d8d74394f690e82a0a97f,
+    graphicsPrefab: {fileID: 6947851120557456192, guid: c17d69cc625c34a4aa583b1a088f2dba,
       type: 3}
   - collectibleName: Carrot
     graphicsPrefab: {fileID: 6947851120557456192, guid: e934c65df418aad4095f0a02f0a46fe0,
       type: 3}
   - collectibleName: Eggs
-    graphicsPrefab: {fileID: 4515415137237394455, guid: 8f62d90f15b38df489c078286187f0c7,
+    graphicsPrefab: {fileID: 6947851120557456192, guid: 968c88171f3b5b349a20453c772b5669,
       type: 3}
   - collectibleName: Pasta
     graphicsPrefab: {fileID: 4515415137237394455, guid: 14a814c97b3ee934c8adb563d87570ed,
       type: 3}
-  - collectibleName: Gel
-    graphicsPrefab: {fileID: 4515415137237394455, guid: a4ff5a4993edde144a05e92138323b1d,
+  - collectibleName: Apple2
+    graphicsPrefab: {fileID: 6947851120557456192, guid: 81f33782a38623c42b698be340cded97,
       type: 3}
   - collectibleName: Mask
-    graphicsPrefab: {fileID: 4515415137237394455, guid: 4465b07310652d244bcbdd99a8210047,
+    graphicsPrefab: {fileID: 6947851120557456192, guid: 07ab39fe75b4a8f4789945ad0983bf60,
+      type: 3}
+  - collectibleName: Gel
+    graphicsPrefab: {fileID: 6947851120557456192, guid: 9ca18ab6ea6393e4fb913a1f30282a7e,
       type: 3}
