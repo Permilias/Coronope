@@ -41,6 +41,7 @@ public class InfectionManager : MonoBehaviour
             infection = maxInfection;
         }
 
+        GameManager.Instance.ResetSpeed();
         InfectionWheel.Instance.RefreshWedgeInfection();
     }
 

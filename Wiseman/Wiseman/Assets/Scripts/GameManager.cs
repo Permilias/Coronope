@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class GameManager : MonoBehaviour
 {
@@ -8,15 +9,19 @@ public class GameManager : MonoBehaviour
 
     public DifficultyConfig difficultyConfig;
 
-    float growingSpeedMult;
+    float baseSpeedMult;
     public float speedMultiplier;
+
+    float addedSpeed;
 
     private void Awake()
     {
         Instance = this;
 
-        growingSpeedMult = speedMultiplier;
+        baseSpeedMult = speedMultiplier;
         speedMultiplier = 0f;
+
+        addedSpeed = (difficultyConfig.maxAcceleration - baseSpeedMult) / difficultyConfig.accelerationGrowingDuration;
     }
 
     private void Start()
@@ -36,11 +41,33 @@ public class GameManager : MonoBehaviour
 
 
         StartMenu();
+
+
+    }
+
+    float difficultyCount;
+    private void Update()
+    {
+        if (speedMultiplier == 0) return;
+
+        //grow difficulty
+        difficultyCount += Time.deltaTime;
+        if(difficultyCount >= 1f)
+        {
+            difficultyCount -= 1f;
+            speedMultiplier += addedSpeed;
+        }
+    }
+
+    public void ResetSpeed()
+    {
+        difficultyCount = 0f;
+        DOTween.To(() => speedMultiplier, x => speedMultiplier = x, baseSpeedMult, 0.3f);
     }
 
     public void StartGame()
     {
-        speedMultiplier = growingSpeedMult;
+        speedMultiplier = baseSpeedMult;
         CameraAnimator.Instance.SetGameplay();
         PlayerAnimation.Instance.TurnToStreet();
         CanvasAnim_Game.Instance.Display();

@@ -1045,7 +1045,7 @@ MonoBehaviour:
   inactiveChunksParent: {fileID: 126725226}
   nextChunkIndex: 0
   currentSpeed: 0
-  enableStartingChunks: 0
+  enableStartingChunks: 1
 --- !u!1 &579133528
 GameObject:
   m_ObjectHideFlags: 0
@@ -1783,14 +1783,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0.0042085345, y: -0, z: -0, w: 0.9999912}
+  m_LocalPosition: {x: 0, y: -0.06, z: 0.09}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1285555843}
   m_Father: {fileID: 881374098}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 53.995003, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -0.48200002, y: 0, z: 0}
 --- !u!1 &1070485273
 GameObject:
   m_ObjectHideFlags: 0
@@ -2352,7 +2352,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   livesSaved: 0
   currentGain: 1
-  resfreshingMultiplier: 1.2
+  resfreshingMultiplier: 1.1
   maxGain: 100000000
   maxLivesSaved: 7000000000
 --- !u!1 &1376804784
@@ -3769,9 +3769,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2541991758573775613}
-  m_LocalRotation: {x: -0.52643496, y: 0.6129625, z: 0.121282235, w: 0.5765708}
-  m_LocalPosition: {x: 0.588, y: 0.25900012, z: 0.61400014}
-  m_LocalScale: {x: 0.022853004, y: 0.03791084, z: 0.022853004}
+  m_LocalRotation: {x: -0.52643496, y: 0.6129625, z: 0.12128228, w: 0.5765708}
+  m_LocalPosition: {x: 0.57, y: 0.2616, z: 0.6123}
+  m_LocalScale: {x: 0.037266396, y: 0.06182121, z: 0.037266392}
   m_Children: []
   m_Father: {fileID: 1642243079}
   m_RootOrder: 0

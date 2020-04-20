@@ -32,7 +32,7 @@ public class SneezeEffect : MonoBehaviour
 
         Sequence sneezingSequence = DOTween.Sequence();
 
-        sneezingSequence.Append(DOTween.To(() => width, x => width = x, sneezer.size, sneezer.telegraphDuration).SetEase(Ease.OutBack).OnComplete(() =>
+        sneezingSequence.Append(DOTween.To(() => width, x => width = x, sneezer.size, sneezer.telegraphDuration / GameManager.Instance.speedMultiplier).SetEase(Ease.OutBack).OnComplete(() =>
         {
             mr.material = SneezingManager.Instance.dangerMaterial;
             infectionBox.Enable();
@@ -43,10 +43,10 @@ public class SneezeEffect : MonoBehaviour
             infectionBox.Disable();
         });
 
-        sneezingSequence.Append(DOTween.To(() => width, x => width = x, 0f, SneezingManager.Instance.closingSpeed).SetEase(Ease.InBack).OnComplete(() =>
+        sneezingSequence.Append(DOTween.To(() => width, x => width = x, 0f, SneezingManager.Instance.closingSpeed / GameManager.Instance.speedMultiplier)).SetEase(Ease.InBack).OnComplete(() =>
         {
             Repool();
-        }));
+        });
 
 
         sneezingSequence.Play();

@@ -11,6 +11,6 @@ public class DifficultyConfig : ScriptableObject
     public float maxSpeed;
 
     public float maxAcceleration;
-    public float accelerationGrowingSpeed;
+    public float accelerationGrowingDuration;
     public float accelerationGrowingStart;
 }

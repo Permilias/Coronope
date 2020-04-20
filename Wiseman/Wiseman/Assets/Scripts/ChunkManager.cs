@@ -97,9 +97,11 @@ public class ChunkManager : MonoBehaviour
                     chunkParents[i].position = chunkParents[i-1].position + new Vector3(0, 0, config.chunkSize);
                 }
 
-                chunkParents[i].localScale = new Vector3(Random.Range(0, 2) == 0 ? -1 : 1, 1, 1);
 
                 GenerateNewChunk(i);
+
+                chunkParents[i].localScale = new Vector3(Random.Range(0, 2) == 0 ? -1 : 1, 1, 1);
+
             }
         }
     }
