@@ -18,7 +18,7 @@ public class Obstacle : MonoBehaviour
     public bool scores;
     bool gaveScore;
 
-    CharacterGraphics charaGraphics;
+    CharacterGraphics[] charaGraphics;
 
     Vector3 basePos;
 
@@ -30,7 +30,7 @@ public class Obstacle : MonoBehaviour
 
         sneezing = GetComponent<ObstacleSneezing>();
 
-        charaGraphics = GetComponentInChildren<CharacterGraphics>();
+        charaGraphics = GetComponentsInChildren<CharacterGraphics>();
 
         ObstacleUpdate += MainUpdate;
 
@@ -78,9 +78,13 @@ public class Obstacle : MonoBehaviour
             print("sneezing");
             sneezing.Initialize(this);
         }
-        if(charaGraphics)
+        if(charaGraphics != null)
         {
-            charaGraphics.Initialize();
+            for (int i = 0; i < charaGraphics.Length; i++)
+            {
+                charaGraphics[i].Initialize();
+            }
+
         }
 
     }

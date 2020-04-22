@@ -5,11 +5,13 @@ using UnityEngine;
 public class ObstacleSneezing : MonoBehaviour
 {
     Obstacle obstacle;
+    public Animator anim;
 
     public void Initialize(Obstacle _obstacle)
     {
         obstacle = _obstacle;
         obstacle.ObstacleUpdate += SneezingUpdate;
+
 
         SetWaiting();
     }
@@ -20,12 +22,19 @@ public class ObstacleSneezing : MonoBehaviour
     public float size;
     int phase;
 
+    bool choke;
+
     float count;
     public void SneezingUpdate()
     {
         if (!obstacle.active) return;
 
-            count += Time.deltaTime;
+        if(!choke) { choke = true;
+            anim.SetTrigger("setSneezer");
+        }
+        
+
+        count += Time.deltaTime;
         switch (phase)
         {
             //wait
@@ -34,6 +43,8 @@ public class ObstacleSneezing : MonoBehaviour
                 {
                     count = 0f;
                     phase = 1;
+                    anim.SetTrigger("startSneezing");
+                    anim.speed = 1f/telegraphDuration;
                     StartTelegraph();
                 }
                 break;
@@ -43,6 +54,8 @@ public class ObstacleSneezing : MonoBehaviour
                 {
                     count = 0f;
                     phase = 2;
+                    anim.SetTrigger("sneeze");
+                    anim.speed = 1f;
                     StopTelegraph();
                     Sneeze();
                 }
@@ -53,6 +66,7 @@ public class ObstacleSneezing : MonoBehaviour
                 {
                     count = 0f;
                     phase = 0;
+                    anim.speed = 1f;
                     SetWaiting();
                 }
                 break;

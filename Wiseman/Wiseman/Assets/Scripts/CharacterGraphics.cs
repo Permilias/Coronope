@@ -43,14 +43,18 @@ public class CharacterGraphics : MonoBehaviour
             randomizers[i].RandomizeColor();
         }
 
-        if(canBeGirl)
+        if(girlHair)
         {
-            girlHair.SetActive(Random.Range(0, 2) == 0 ? true : false);
+            if (canBeGirl)
+            {
+                girlHair.SetActive(Random.Range(0, 2) == 0 ? true : false);
+            }
+            else
+            {
+                girlHair.SetActive(false);
+            }
         }
-        else
-        {
-            girlHair.SetActive(false);
-        }
+
     }
 }
 

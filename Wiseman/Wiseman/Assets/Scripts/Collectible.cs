@@ -29,6 +29,7 @@ public class Collectible : MonoBehaviour
         transform.localScale = Vector3.one;
         Refresh(_data);
 
+
     }
 
     public void Refresh(CollectibleData _data)
@@ -42,6 +43,7 @@ public class Collectible : MonoBehaviour
 
         if (graphics != null)
         {
+            graphics.transform.localScale = Vector3.one;
             graphics.gameObject.SetActive(true);
             graphics.transform.parent = graphicsParent;
             graphics.transform.localPosition = Vector3.zero;
