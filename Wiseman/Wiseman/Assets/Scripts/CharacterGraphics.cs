@@ -14,7 +14,7 @@ public class CharacterGraphics : MonoBehaviour
 
     public MeshColorRandomizer[] randomizers;
 
-    Animator anim;
+    public Animator anim;
 
 
     public void Stun()

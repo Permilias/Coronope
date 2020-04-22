@@ -11,10 +11,12 @@ public class CollectibleManager : MonoBehaviour
 
     public float shrinkingSpeed;
 
-    public int collectiblesPossessed;
+    public int masksPossessed;
 
     public int gainMultiplierPerCollectible;
 
+    public CollectibleConfig maskConfig;
+    public CollectibleData maskData;
 
     private void Awake()
     {
@@ -29,6 +31,8 @@ public class CollectibleManager : MonoBehaviour
 
     public void Initialize()
     {
+        maskData = new CollectibleData(maskConfig);
+
         currentCollectibles = new List<Collectible>();
 
         dataToCollect = new List<CollectibleData>();
@@ -39,11 +43,12 @@ public class CollectibleManager : MonoBehaviour
         }
     }
 
+
     public void DropAllCollectibles()
     {
-        ScoreManager.Instance.GainLivesSaved(gainMultiplierPerCollectible * collectiblesPossessed);
+        ScoreManager.Instance.GainLivesSaved(gainMultiplierPerCollectible * masksPossessed);
 
-        collectiblesPossessed = 0;
+        masksPossessed = 0;
 
         PlayerController.Instance.RefreshMovementValues();
 
@@ -52,13 +57,14 @@ public class CollectibleManager : MonoBehaviour
 
     public void Collect(Collectible collectible)
     {
-        collectible.transform.DOScale(Vector3.zero, shrinkingSpeed).SetEase(Ease.InBack, 1.5f).OnComplete(() =>
-        {
-            collectible.RepoolGraphics();
-        });
+        
         collectible.col.enabled = false;
 
-        collectiblesPossessed++;
+        if(collectible.mask)
+        {
+            masksPossessed++;
+        }
+
 
         for(int i = 0; i < currentCollectibles.Count; i++)
         {
@@ -69,7 +75,6 @@ public class CollectibleManager : MonoBehaviour
 
         }
 
-        GroceryDisplay.Instance.AddDisplay(collectible.data);
 
         PlayerController.Instance.RefreshMovementValues();
     }

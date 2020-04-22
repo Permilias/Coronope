@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class Collectible : MonoBehaviour
 {
@@ -9,7 +10,9 @@ public class Collectible : MonoBehaviour
     [HideInInspector]
     public Collider col;
     public Transform graphicsParent;
-    GameObject graphics;
+    public GameObject graphics;
+
+    public bool mask;
 
     private void Awake()
     {
@@ -32,10 +35,20 @@ public class Collectible : MonoBehaviour
 
     }
 
+
+
     public void Refresh(CollectibleData _data)
     {
         if (collected) return;
         data = _data;
+
+
+        if (mask)
+        {
+            graphics.transform.localScale = Vector3.one;
+            graphics.gameObject.SetActive(true);
+            return;
+        }
 
         RepoolGraphics();
 
@@ -62,7 +75,7 @@ public class Collectible : MonoBehaviour
     public void Deactivate()
     {
         CollectibleManager.Instance.currentCollectibles.Remove(this);
-        if (graphics!= null)
+        if (graphics!= null && ! mask)
         {
             data.Repool(graphics);
         }
@@ -74,6 +87,21 @@ public class Collectible : MonoBehaviour
         collected = true;
         CollectibleManager.Instance.Collect(this);
         print("collected !");
+
+
+
+        graphics.transform.DOScale(Vector3.one * 1.3f, CollectibleManager.Instance.shrinkingSpeed);
+        graphics.transform.DOLocalMove(graphics.transform.localPosition + new Vector3(0, 3, 0), CollectibleManager.Instance.shrinkingSpeed).OnComplete(() =>
+        {
+            graphics.transform.DOScale(Vector3.zero, CollectibleManager.Instance.shrinkingSpeed);
+            graphics.transform.DOLocalMove(graphics.transform.localPosition + new Vector3(0, 0, 0), CollectibleManager.Instance.shrinkingSpeed).OnComplete(() =>
+            {
+                if (!mask)
+                {
+                    RepoolGraphics();
+                }
+            });
+        });
     }
 
     private void OnTriggerEnter(Collider collider)

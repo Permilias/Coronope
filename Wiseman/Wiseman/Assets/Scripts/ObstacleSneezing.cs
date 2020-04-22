@@ -14,6 +14,8 @@ public class ObstacleSneezing : MonoBehaviour
 
 
         SetWaiting();
+
+        anim.SetTrigger("setSneezer");
     }
 
     public float telegraphDuration;
@@ -28,10 +30,6 @@ public class ObstacleSneezing : MonoBehaviour
     public void SneezingUpdate()
     {
         if (!obstacle.active) return;
-
-        if(!choke) { choke = true;
-            anim.SetTrigger("setSneezer");
-        }
         
 
         count += Time.deltaTime;

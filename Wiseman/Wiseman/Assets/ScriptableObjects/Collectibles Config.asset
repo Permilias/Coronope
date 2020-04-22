@@ -31,9 +31,6 @@ MonoBehaviour:
   - collectibleName: Apple2
     graphicsPrefab: {fileID: 6947851120557456192, guid: 81f33782a38623c42b698be340cded97,
       type: 3}
-  - collectibleName: Mask
-    graphicsPrefab: {fileID: 6947851120557456192, guid: 07ab39fe75b4a8f4789945ad0983bf60,
-      type: 3}
   - collectibleName: Gel
     graphicsPrefab: {fileID: 6947851120557456192, guid: 9ca18ab6ea6393e4fb913a1f30282a7e,
       type: 3}

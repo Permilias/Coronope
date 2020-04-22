@@ -54,9 +54,9 @@ public class PlayerController : MonoBehaviour
     public float smoothTime;
     public void RefreshMovementValues()
     {
-        accelerationSpeed = config.inputAcceleration + (CollectibleManager.Instance.collectiblesPossessed * GameManager.Instance.difficultyConfig.addedSpeedPerItem);
+        accelerationSpeed = config.inputAcceleration + (CollectibleManager.Instance.masksPossessed * GameManager.Instance.difficultyConfig.addedSpeedPerItem);
         if (accelerationSpeed >= GameManager.Instance.difficultyConfig.maxSpeed) accelerationSpeed = GameManager.Instance.difficultyConfig.maxSpeed;
-        smoothTime = config.smoothTime + (CollectibleManager.Instance.collectiblesPossessed * GameManager.Instance.difficultyConfig.addedSmoothTimePerItem);
+        smoothTime = config.smoothTime + (CollectibleManager.Instance.masksPossessed * GameManager.Instance.difficultyConfig.addedSmoothTimePerItem);
         if (smoothTime >= GameManager.Instance.difficultyConfig.maxSmoothTime) smoothTime = GameManager.Instance.difficultyConfig.maxSmoothTime;
     }
 

@@ -21,7 +21,6 @@ public class Chunk : MonoBehaviour
 
     public void Initialize()
     {
-
         for (int i = 0; i < obstacles.Length; i++)
         {
             obstacles[i].Initialize();
@@ -29,7 +28,15 @@ public class Chunk : MonoBehaviour
 
         for (int i = 0; i < collectibles.Length; i++)
         {
-            collectibles[i].Initialize(CollectibleManager.Instance.GetSuitableData());
+            if(!collectibles[i].mask)
+            {
+                collectibles[i].Initialize(CollectibleManager.Instance.GetSuitableData());
+            }
+            else
+            {
+                collectibles[i].Initialize(CollectibleManager.Instance.maskData);
+            }
+
         }
 
         decorum.Initialize();

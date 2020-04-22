@@ -25,6 +25,7 @@ public class PlayerAnimation : MonoBehaviour
     public void Initialize()
     {
         graphics.Initialize();
+
     }
 
     public void SetStreet()
@@ -39,11 +40,13 @@ public class PlayerAnimation : MonoBehaviour
 
     public void TurnToStreet()
     {
+        graphics.anim.SetBool("mainIdle", false);
         anim.SetBool("facingCamera", false);
     }
 
     public void TurnToCamera()
     {
+        graphics.anim.SetBool("mainIdle", true);
         anim.SetBool("facingCamera", true);
     }
 }
