@@ -11,7 +11,9 @@ public class GroceryDisplay : MonoBehaviour
         Instance = this;
     }
 
-    public List<CollectibleData> displayedGroceries;
+    public List<CollectibleData> groceries;
+    
+
     public List<GameObject> displayedObjects;
     public List<Transform> displayedParents;
     public float displayParentDistance;
@@ -23,15 +25,16 @@ public class GroceryDisplay : MonoBehaviour
     {
         displayedParents = new List<Transform>();
         displayedObjects = new List<GameObject>();
-        displayedGroceries = new List<CollectibleData>();
+        groceries = new List<CollectibleData>();
+
     }
 
     public void AddDisplay(CollectibleData data)
     {
-        displayedGroceries.Add(data);
-        if(displayedParents.Count < displayedGroceries.Count)
+        groceries.Add(data);
+        if(displayedParents.Count < groceries.Count)
         {
-            for(int i = displayedParents.Count; i < displayedGroceries.Count; i++)
+            for(int i = displayedParents.Count; i < groceries.Count; i++)
             {
                 displayedParents.Add(Instantiate(baseParent, transform).transform);
                 displayedParents[i].parent = parent.transform;
@@ -43,39 +46,23 @@ public class GroceryDisplay : MonoBehaviour
 
     public void RemoveAllDisplays()
     {
-        displayedGroceries = new List<CollectibleData>();
-        displayedObjects = new List<GameObject>();
+        groceries = new List<CollectibleData>();
         RefreshDisplays();
     }
 
     public void RefreshDisplays()
     {
-        int count = 0;
-        for(int i = 0; i < displayedGroceries.Count; i++)
+        for(int i =0; i < displayedObjects.Count; i++)
         {
-            if(displayedObjects.Count <= i)
-            {
-                displayedObjects.Add(displayedGroceries[i].Depool());
-            }
-
-            count++;
+            Destroy(displayedObjects[i]);
         }
 
-        int displayedCount = displayedObjects.Count;
-        if (displayedCount > count)
-        {
-            for(int i = displayedCount-1; i >= count; i--)
-            {
-                displayedObjects[i].SetActive(false);
-               
-                displayedObjects.RemoveAt(i);
-            }
-        }
+        displayedObjects = new List<GameObject>();
 
-        if (displayedCount <= 0) return;
-
-        for(int i = 0; i < displayedObjects.Count; i++)
+        for(int i = 0; i < groceries.Count; i++)
         {
+            displayedObjects.Add(groceries[i].Depool());
+
             displayedObjects[i].transform.parent = displayedParents[i].transform;
             displayedObjects[i].transform.localPosition = Vector3.zero;
             displayedObjects[i].transform.localScale = Vector3.one;

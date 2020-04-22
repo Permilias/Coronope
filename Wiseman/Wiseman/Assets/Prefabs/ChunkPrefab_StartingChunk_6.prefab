@@ -391,7 +391,7 @@ PrefabInstance:
     - target: {fileID: 5459867603580776516, guid: e91f26a7711da6745b0cccd9c6ac48ec,
         type: 3}
       propertyPath: infected
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6653228943022661398, guid: e91f26a7711da6745b0cccd9c6ac48ec,
         type: 3}
@@ -891,7 +891,7 @@ PrefabInstance:
     - target: {fileID: 5998928905775666473, guid: a35d0baee17c8f9429c3b9cbc9289ca2,
         type: 3}
       propertyPath: startsInfected
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5998928905775666475, guid: a35d0baee17c8f9429c3b9cbc9289ca2,
         type: 3}

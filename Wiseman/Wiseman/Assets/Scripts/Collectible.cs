@@ -36,11 +36,7 @@ public class Collectible : MonoBehaviour
         if (collected) return;
         data = _data;
 
-        if(graphics!=null)
-        {
-            data.Repool(graphics);
-            graphics = null;
-        }
+        RepoolGraphics();
 
         graphics = data.Depool();
 
@@ -49,6 +45,15 @@ public class Collectible : MonoBehaviour
             graphics.gameObject.SetActive(true);
             graphics.transform.parent = graphicsParent;
             graphics.transform.localPosition = Vector3.zero;
+        }
+    }
+
+    public void RepoolGraphics()
+    {
+        if (graphics != null)
+        {
+            data.Repool(graphics);
+            graphics = null;
         }
     }
 

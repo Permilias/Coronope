@@ -20,8 +20,11 @@ public class SneezeEffect : MonoBehaviour
         infectionBox.Disable();
     }
 
+    bool sneezing = false;
     public void Sneeze(ObstacleSneezing sneezer)
     {
+        if (sneezing) return;
+        sneezing = true;
         infectionBox.col.size = new Vector3(sneezer.size, 3, 60);
         infectionBox.Disable();
         transform.position = new Vector3(sneezer.transform.position.x, 0, sneezer.transform.position.z);
@@ -31,25 +34,22 @@ public class SneezeEffect : MonoBehaviour
         mr.material = SneezingManager.Instance.telegraphMaterial;
 
         Sequence sneezingSequence = DOTween.Sequence();
-
-        sneezingSequence.Append(DOTween.To(() => width, x => width = x, sneezer.size, sneezer.telegraphDuration / GameManager.Instance.speedMultiplier).SetEase(Ease.OutBack).OnComplete(() =>
+        DOTween.To(() => width, x => width = x, sneezer.size, sneezer.telegraphDuration / GameManager.Instance.speedMultiplier).SetEase(Ease.OutBack).OnComplete(() =>
         {
             mr.material = SneezingManager.Instance.dangerMaterial;
             infectionBox.Enable();
-        }));
 
-        sneezingSequence.AppendInterval(sneezer.sneezingDuration).OnComplete(() =>
-        {
-            infectionBox.Disable();
+            transform.DOLocalMove(transform.localPosition, sneezer.sneezingDuration / GameManager.Instance.speedMultiplier).OnComplete(() =>
+            {
+                infectionBox.Disable();
+                DOTween.To(() => width, x => width = x, 0f, SneezingManager.Instance.closingSpeed / GameManager.Instance.speedMultiplier).SetEase(Ease.InBack).OnComplete(() =>
+                {
+                    sneezing = false;
+                    Repool();
+
+                });
+            });
         });
-
-        sneezingSequence.Append(DOTween.To(() => width, x => width = x, 0f, SneezingManager.Instance.closingSpeed / GameManager.Instance.speedMultiplier)).SetEase(Ease.InBack).OnComplete(() =>
-        {
-            Repool();
-        });
-
-
-        sneezingSequence.Play();
     }
 
 

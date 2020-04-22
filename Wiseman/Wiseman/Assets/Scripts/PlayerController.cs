@@ -132,6 +132,7 @@ public class PlayerController : MonoBehaviour
         stunSmooth = config.stunSmooth;
         stunCount = config.stunDuration;
         PlayerAnimation.Instance.stunStars.SetActive(true);
+        PlayerAnimation.Instance.graphics.Stun();
     }
 
     public void Unstun()
@@ -139,6 +140,7 @@ public class PlayerController : MonoBehaviour
         stunSpeed = 0f;
         stunSmooth = 0f;
         PlayerAnimation.Instance.stunStars.SetActive(false);
+        PlayerAnimation.Instance.graphics.Unstun();
     }
 
 }

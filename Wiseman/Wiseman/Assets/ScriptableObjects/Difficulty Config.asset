@@ -17,5 +17,5 @@ MonoBehaviour:
   maxSmoothTime: 0.6
   maxSpeed: 8
   maxAcceleration: 1.4
-  accelerationGrowingDuration: 45
+  accelerationGrowingDuration: 120
   accelerationGrowingStart: 0

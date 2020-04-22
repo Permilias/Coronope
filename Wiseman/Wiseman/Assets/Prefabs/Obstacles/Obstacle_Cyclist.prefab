@@ -255,7 +255,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   infectionDiameter: 6
-  startsInfected: 0
+  startsInfected: 1
   infected: 0
   zone: {fileID: 0}
 --- !u!1001 &1749206410377775826

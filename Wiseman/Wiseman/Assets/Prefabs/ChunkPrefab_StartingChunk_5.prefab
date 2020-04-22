@@ -79,7 +79,7 @@ PrefabInstance:
     - target: {fileID: 5459867603580776516, guid: e91f26a7711da6745b0cccd9c6ac48ec,
         type: 3}
       propertyPath: startsInfected
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6653228943022661398, guid: e91f26a7711da6745b0cccd9c6ac48ec,
         type: 3}
@@ -301,7 +301,7 @@ PrefabInstance:
     - target: {fileID: 5459867603580776516, guid: a8085bc2c638d1e429fc20c0eb4c7f8f,
         type: 3}
       propertyPath: infectionDiameter
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6653228943022661398, guid: a8085bc2c638d1e429fc20c0eb4c7f8f,
         type: 3}
@@ -380,7 +380,7 @@ PrefabInstance:
     - target: {fileID: 5459867603580776516, guid: e91f26a7711da6745b0cccd9c6ac48ec,
         type: 3}
       propertyPath: startsInfected
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6653228943022661398, guid: e91f26a7711da6745b0cccd9c6ac48ec,
         type: 3}

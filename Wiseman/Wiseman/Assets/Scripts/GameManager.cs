@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
 
     float baseSpeedMult;
     public float speedMultiplier;
+    public float minSpeed;
 
     float addedSpeed;
 
@@ -37,7 +38,9 @@ public class GameManager : MonoBehaviour
 
         ChunkManager.Instance.Initialize();
 
+        PlayerAnimation.Instance.Initialize();
         PlayerController.Instance.RefreshMovementValues();
+
 
 
         StartMenu();
@@ -56,13 +59,15 @@ public class GameManager : MonoBehaviour
         {
             difficultyCount -= 1f;
             speedMultiplier += addedSpeed;
+
+            if (speedMultiplier >= difficultyConfig.maxAcceleration) speedMultiplier = difficultyConfig.maxAcceleration;
         }
     }
 
     public void ResetSpeed()
     {
         difficultyCount = 0f;
-        DOTween.To(() => speedMultiplier, x => speedMultiplier = x, baseSpeedMult, 0.3f);
+        DOTween.To(() => speedMultiplier, x => speedMultiplier = x, baseSpeedMult, 0.5f);
     }
 
     public void StartGame()

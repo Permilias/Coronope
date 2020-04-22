@@ -15,7 +15,7 @@ MonoBehaviour:
   chunkSize: 70
   baseSpeed: 5
   dropChunkDelayCount: 10
-  collectibleChunkDelayCount: 3
+  collectibleChunkDelayCount: 1
   collectibleChunkOdds: 1
   startingChunks:
   - {fileID: 5981182719764068892, guid: 95cd5785bc0e66041914b8d8cef0e2d0, type: 3}
@@ -29,7 +29,9 @@ MonoBehaviour:
   - {fileID: 4072912292533952241, guid: a98b44e8728af424d917442551bb7565, type: 3}
   - {fileID: 4676619518855885715, guid: f5e7092bc1a46064abbd515e92c9447e, type: 3}
   - {fileID: 6517833516639082625, guid: db4d5abcbfedc9c459814f3dfce977c7, type: 3}
+  - {fileID: 4543425829154388696, guid: d3c577f2cac59c0459bce3ca7ad97bb1, type: 3}
   collectibleChunks:
   - {fileID: 4072912292533952241, guid: df7c275a4b5ef964c88a3bde353a31ac, type: 3}
+  - {fileID: 5977765389843467731, guid: 79b1cdbcf24266e4abe44b0be6fa24ba, type: 3}
   dropChunks:
   - {fileID: 4052726958437542244, guid: 11263837a9c2dbf49a3b1e383b879718, type: 3}

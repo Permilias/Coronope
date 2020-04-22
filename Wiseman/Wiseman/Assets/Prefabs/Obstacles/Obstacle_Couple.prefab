@@ -275,7 +275,6 @@ MonoBehaviour:
   symmetry: 0
   active: 0
   scores: 1
-  gaveScore: 0
 --- !u!114 &5998928905775666473
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -288,7 +287,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 158010e925063a348a40794a03e5071c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  infectionDiameter: 8
+  infectionDiameter: 7
+  startsInfected: 1
+  infected: 0
   zone: {fileID: 0}
 --- !u!114 &5998928905775666472
 MonoBehaviour:
@@ -303,6 +304,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseSpeed: 2
+  telegraphs: 0
+  telegraph: {fileID: 0}
+  telegraphSpeed: 0
 --- !u!136 &5998928905775666468
 CapsuleCollider:
   m_ObjectHideFlags: 0

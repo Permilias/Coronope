@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class InfectionZone : MonoBehaviour
 {
-    public Projector projector;
+    public MeshRenderer groundTextureMR;
     public CapsuleCollider col;
     public float size;
     public bool infected;
@@ -14,15 +14,15 @@ public class InfectionZone : MonoBehaviour
     {
         infected = false;
         size = _size;
-        projector.fieldOfView = size * 10;
-        col.radius = size / 2f;
-        projector.material = InfectionManager.Instance.normalProjectorMaterial;
+        transform.localScale = Vector3.one * size;
+        //col.radius = size / 2f;
+        groundTextureMR.material = InfectionManager.Instance.normalProjectorMaterial;
     }
 
     public void Infect()
     {
         infected = true;
-        projector.material = InfectionManager.Instance.infectedProjectorMaterial;
+        groundTextureMR.material = InfectionManager.Instance.infectedProjectorMaterial;
     }
 
     public bool playerInside;

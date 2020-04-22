@@ -78,7 +78,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   randomizeRotation: 0
   minMaxRotation: {x: 0, y: 0}
-  symmetry: 1
+  symmetry: 0
   active: 0
   scores: 0
 --- !u!136 &6236933284904420275

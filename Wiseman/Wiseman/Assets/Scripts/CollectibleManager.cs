@@ -52,7 +52,10 @@ public class CollectibleManager : MonoBehaviour
 
     public void Collect(Collectible collectible)
     {
-        collectible.transform.DOScale(Vector3.zero, shrinkingSpeed).SetEase(Ease.InBack, 1.5f);
+        collectible.transform.DOScale(Vector3.zero, shrinkingSpeed).SetEase(Ease.InBack, 1.5f).OnComplete(() =>
+        {
+            collectible.RepoolGraphics();
+        });
         collectible.col.enabled = false;
 
         collectiblesPossessed++;
@@ -116,6 +119,7 @@ public class CollectibleData
     {
         if(graphics != null)
         pool.Enqueue(graphics);
+        
         graphics.SetActive(false);
     }
 }

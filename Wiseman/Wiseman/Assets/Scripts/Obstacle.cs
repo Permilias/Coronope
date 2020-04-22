@@ -18,6 +18,8 @@ public class Obstacle : MonoBehaviour
     public bool scores;
     bool gaveScore;
 
+    CharacterGraphics charaGraphics;
+
     Vector3 basePos;
 
     private void Awake()
@@ -27,6 +29,8 @@ public class Obstacle : MonoBehaviour
         infection = GetComponent<ObstacleInfection>();
 
         sneezing = GetComponent<ObstacleSneezing>();
+
+        charaGraphics = GetComponentInChildren<CharacterGraphics>();
 
         ObstacleUpdate += MainUpdate;
 
@@ -74,6 +78,11 @@ public class Obstacle : MonoBehaviour
             print("sneezing");
             sneezing.Initialize(this);
         }
+        if(charaGraphics)
+        {
+            charaGraphics.Initialize();
+        }
+
     }
 
     public void Deactivate()

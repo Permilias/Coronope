@@ -79,8 +79,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 158010e925063a348a40794a03e5071c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  infectionDiameter: 3
-  startsInfected: 0
+  infectionDiameter: 6
+  startsInfected: 1
   infected: 0
   zone: {fileID: 0}
 --- !u!114 &4474475971052508849
@@ -96,9 +96,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   telegraphDuration: 2
-  sneezingDuration: 0.2
-  delay: 1.5
-  size: 2
+  sneezingDuration: 0.5
+  delay: 1.4
+  size: 2.5
 --- !u!1 &4474475971142200341
 GameObject:
   m_ObjectHideFlags: 0

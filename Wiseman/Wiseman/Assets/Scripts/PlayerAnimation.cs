@@ -8,6 +8,9 @@ public class PlayerAnimation : MonoBehaviour
 
     public GameObject stunStars;
 
+
+    public CharacterGraphics graphics;
+
     Animator anim;
     private void Awake()
     {
@@ -16,6 +19,12 @@ public class PlayerAnimation : MonoBehaviour
         anim = GetComponent<Animator>();
 
         stunStars.SetActive(false);
+
+    }
+
+    public void Initialize()
+    {
+        graphics.Initialize();
     }
 
     public void SetStreet()
