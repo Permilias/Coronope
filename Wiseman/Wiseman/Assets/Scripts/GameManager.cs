@@ -84,12 +84,21 @@ public class GameManager : MonoBehaviour
         speedMultiplier = 0;
         CameraAnimator.Instance.SetCinematic();
         PlayerAnimation.Instance.TurnToCamera();
-        CanvasAnim_Game.Instance.Hide();
+
     }
 
     public void StartMenu()
     {
         GoToMenu();
+        CanvasAnim_Game.Instance.Hide();
         CanvasAnim_StartMenu.Instance.Display();
+    }
+
+    public void LooseGame()
+    {
+        MusicManager.Instance.CurrentPlayingSource().Stop();
+        GoToMenu();
+        PlayerAnimation.Instance.EndSneezing();
+        CameraAnimator.Instance.transform.DOMove(PlayerController.Instance.transform.position, 0.3f);
     }
 }

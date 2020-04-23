@@ -36,13 +36,17 @@ public class InfectionManager : MonoBehaviour
     {
         ScoreManager.Instance.LooseLivesSaved(ScoreManager.Instance.currentGain);
         infection += amount;
-        if(infection > maxInfection)
+        if(infection >= maxInfection)
         {
             infection = maxInfection;
+            GameManager.Instance.LooseGame();
+            return;
         }
 
         GameManager.Instance.ResetSpeed();
         InfectionWheel.Instance.RefreshWedgeInfection();
+
+       
     }
 
     private void Update()

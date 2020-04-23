@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using TMPro;
 
 public class CollectibleManager : MonoBehaviour
 {
@@ -17,6 +18,8 @@ public class CollectibleManager : MonoBehaviour
 
     public CollectibleConfig maskConfig;
     public CollectibleData maskData;
+
+    public TextMeshProUGUI masksTextMesh;
 
     private void Awake()
     {
@@ -41,18 +44,22 @@ public class CollectibleManager : MonoBehaviour
         {
             dataToCollect.Add(new CollectibleData(config.configs[i]));
         }
+
+        masksTextMesh.text = "x" + masksPossessed.ToString();
     }
 
 
-    public void DropAllCollectibles()
+    public void DropAllCollectibles(Transform dropTransform)
     {
         ScoreManager.Instance.GainLivesSaved(gainMultiplierPerCollectible * masksPossessed);
+        FXPlayer.Instance.PlayTextMessage(dropTransform, Color.white, "+ " + (gainMultiplierPerCollectible * masksPossessed).ToString() + " lives !", 4f);
 
         masksPossessed = 0;
 
         PlayerController.Instance.RefreshMovementValues();
+        masksTextMesh.text = "x" + masksPossessed.ToString();
 
-        GroceryDisplay.Instance.RemoveAllDisplays();
+
     }
 
     public void Collect(Collectible collectible)
@@ -75,7 +82,7 @@ public class CollectibleManager : MonoBehaviour
 
         }
 
-
+        masksTextMesh.text = "x" + masksPossessed.ToString();
         PlayerController.Instance.RefreshMovementValues();
     }
 

@@ -15,7 +15,6 @@ public class ObstacleSneezing : MonoBehaviour
 
         SetWaiting();
 
-        anim.SetTrigger("setSneezer");
     }
 
     public float telegraphDuration;
@@ -30,7 +29,8 @@ public class ObstacleSneezing : MonoBehaviour
     public void SneezingUpdate()
     {
         if (!obstacle.active) return;
-        
+
+        anim.SetBool("sneezing", true);
 
         count += Time.deltaTime;
         switch (phase)
@@ -41,6 +41,7 @@ public class ObstacleSneezing : MonoBehaviour
                 {
                     count = 0f;
                     phase = 1;
+
                     anim.SetTrigger("startSneezing");
                     anim.speed = 1f/telegraphDuration;
                     StartTelegraph();
@@ -66,6 +67,7 @@ public class ObstacleSneezing : MonoBehaviour
                     phase = 0;
                     anim.speed = 1f;
                     SetWaiting();
+
                 }
                 break;
         }
@@ -74,6 +76,7 @@ public class ObstacleSneezing : MonoBehaviour
     void SetWaiting()
     {
 
+        anim.SetTrigger("setSneezer");
     }
 
     void StartTelegraph()
@@ -88,7 +91,7 @@ public class ObstacleSneezing : MonoBehaviour
 
     void Sneeze()
     {
-        print("sneezing !");
+
     }
 
 

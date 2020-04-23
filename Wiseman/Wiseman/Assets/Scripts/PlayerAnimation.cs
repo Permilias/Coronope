@@ -49,4 +49,11 @@ public class PlayerAnimation : MonoBehaviour
         graphics.anim.SetBool("mainIdle", true);
         anim.SetBool("facingCamera", true);
     }
+    
+    public void EndSneezing()
+    {
+        graphics.anim.SetBool("sneezing", true);
+        graphics.anim.SetTrigger("startSneezing");
+
+    }
 }
