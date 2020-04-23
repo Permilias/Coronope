@@ -17,6 +17,13 @@ public class PlayerController : MonoBehaviour
 
     Rigidbody rb;
 
+    public void Stop()
+    {
+        rb.isKinematic = true;
+        rb.velocity = Vector3.zero;
+        currentVel = Vector3.zero;
+        targetVel = Vector3.zero;
+    }
 
     public Vector3 currentAcceleration;
     public Vector3 currentSpeed;
@@ -26,6 +33,8 @@ public class PlayerController : MonoBehaviour
     Vector3 velRef;
     private void Update()
     {
+        if (GameManager.Instance.speedMultiplier <= 0f) return;
+
         if(stunCount > 0f)
         {
             stunCount -= Time.deltaTime;

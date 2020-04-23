@@ -52,8 +52,10 @@ public class PlayerAnimation : MonoBehaviour
     
     public void EndSneezing()
     {
+        PlayerController.Instance.Stop();
         graphics.anim.SetBool("sneezing", true);
         graphics.anim.SetTrigger("startSneezing");
+        graphics.anim.SetTrigger("sneeze");
 
     }
 }

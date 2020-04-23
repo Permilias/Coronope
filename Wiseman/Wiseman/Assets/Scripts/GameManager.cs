@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -83,6 +84,7 @@ public class GameManager : MonoBehaviour
 
     public void GoToMenu()
     {
+        CanvasAnim_GameOver.Instance.gameObject.SetActive(false);
         speedMultiplier = 0;
         CameraAnimator.Instance.SetCinematic();
         PlayerAnimation.Instance.TurnToCamera();
@@ -91,6 +93,7 @@ public class GameManager : MonoBehaviour
 
     public void StartMenu()
     {
+        CanvasAnim_GameOver.Instance.gameObject.SetActive(false);
         GoToMenu();
         CanvasAnim_Game.Instance.Hide();
         CanvasAnim_StartMenu.Instance.Display();
@@ -98,9 +101,15 @@ public class GameManager : MonoBehaviour
 
     public void LooseGame()
     {
+        CanvasAnim_GameOver.Instance.gameObject.SetActive(true);
         MusicManager.Instance.CurrentPlayingSource().Stop();
         GoToMenu();
         PlayerAnimation.Instance.EndSneezing();
         CameraAnimator.Instance.transform.DOMove(PlayerController.Instance.transform.position, 0.3f);
+    }
+
+    public void Restart()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

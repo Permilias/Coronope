@@ -46,9 +46,9 @@ public class InfectionWheel : MonoBehaviour
     {
         for(int i = 0; i < InfectionManager.Instance.infection; i++)
         {
-            if (wedges[i].sprite != InfectionManager.Instance.infectedWedge)
+            if (wedges[wedges.Count-i-1].sprite != InfectionManager.Instance.infectedWedge)
             {
-                InfectWedge(wedges[i]);
+                InfectWedge(wedges[wedges.Count - i - 1]);
             }
         }
 

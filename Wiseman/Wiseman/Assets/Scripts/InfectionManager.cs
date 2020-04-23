@@ -22,6 +22,9 @@ public class InfectionManager : MonoBehaviour
     public Sprite healthyWedge;
     public Sprite infectedWedge;
 
+    public Color normalInfectionZoneColor;
+    public Color infectedZoneColor;
+
     public Material normalProjectorMaterial;
     public Material infectedProjectorMaterial;
 
