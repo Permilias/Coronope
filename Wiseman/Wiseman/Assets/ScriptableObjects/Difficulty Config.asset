@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1d217e3927c9624a8e3cd5271eef86e, type: 3}
   m_Name: Difficulty Config
   m_EditorClassIdentifier: 
-  addedSmoothTimePerItem: 0.01
+  addedSmoothTimePerItem: 0.02
   addedSpeedPerItem: -0.03
   maxSmoothTime: 0.6
   maxSpeed: 8
