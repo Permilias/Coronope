@@ -41,7 +41,7 @@ public class GameManager : MonoBehaviour
         PlayerAnimation.Instance.Initialize();
         PlayerController.Instance.RefreshMovementValues();
 
-
+        TutorialManager.Instance.Initialize();
 
         StartMenu();
 
@@ -52,6 +52,8 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         if (speedMultiplier == 0) return;
+
+        if (ChunkManager.Instance.inTutorial) return;
 
         //grow difficulty
         difficultyCount += Time.deltaTime;

@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1287045297023139081}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.83, z: 0}
+  m_LocalPosition: {x: 0, y: 1.06, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5382631201327485959}
@@ -4928,7 +4928,7 @@ Transform:
   m_GameObject: {fileID: 5382631201327485958}
   m_LocalRotation: {x: -0.43652493, y: -0, z: -0, w: 0.8996922}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.67536026, y: 0.026446432, z: 0.6753603}
+  m_LocalScale: {x: 0.8637183, y: 0.033822343, z: 0.86371833}
   m_Children: []
   m_Father: {fileID: 4850981612759730579}
   m_RootOrder: 0
@@ -5044,7 +5044,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.57
+  m_Radius: 0.72
   m_Center: {x: 0, y: 0.73, z: 0}
 --- !u!114 &5382631201407451971
 MonoBehaviour:
@@ -5063,9 +5063,13 @@ MonoBehaviour:
     config:
       collectibleName: 
       graphicsPrefab: {fileID: 0}
+      powerUpType: 0
   col: {fileID: 0}
   graphicsParent: {fileID: 5382631201137646052}
   graphics: {fileID: 1287045297023139081}
+  collectHeight: 4
+  forceDataIndex: 0
+  forcesConfig: 0
   mask: 1
 --- !u!1 &6759150832439084541
 GameObject:

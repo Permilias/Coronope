@@ -20,9 +20,9 @@ MonoBehaviour:
     randomizeSize: 0
     minMaxSize: {x: 0, y: 0}
     randomizeRotation: 0
-  textMessageEnterSpeed: 0.15
-  textMessageEnterEase: 27
-  textMessageDuration: 0.8
-  textMessageExitSpeed: 0.2
-  textMessageExitEase: 26
+  textMessageEnterSpeed: 0.2
+  textMessageEnterEase: 1
+  textMessageDuration: 2
+  textMessageExitSpeed: 0.5
+  textMessageExitEase: 1
   textMessageExitHeight: 1

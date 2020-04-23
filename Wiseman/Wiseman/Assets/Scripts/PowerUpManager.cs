@@ -4,25 +4,54 @@ using UnityEngine;
 
 public class PowerUpManager : MonoBehaviour
 {
-    public void PowerUp(PowerUpType type)
+    public static PowerUpManager Instance;
+
+    private void Awake()
     {
+        Instance = this;
+    }
+
+    int carrotsGotten;
+
+    public void PowerUp(PowerUpType type, Transform collectibleTransform)
+    {
+        string message = "";
         switch(type)
         {
             case PowerUpType.heal:
-                break;
-            case PowerUpType.shield:
-                break;
-            case PowerUpType.barrier:
+                message = "Healed 2 !";
+                InfectionManager.Instance.GainInfection(-2);
                 break;
             case PowerUpType.gainHp:
+                message = "Gained HP !";
+                InfectionManager.Instance.maxInfection++;
+                InfectionWheel.Instance.GainWedge();
                 break;
             case PowerUpType.slow:
+                message = "Everybody slows !";
+                GameManager.Instance.ResetSpeed();
                 break;
             case PowerUpType.speed:
+                carrotsGotten++;
+
+                message = "Gained speed !";
+
+                if(carrotsGotten < 4)
+                {
+                    PlayerController.Instance.accelerationSpeed += bonusSpeed;
+                }
+
                 break;
             case PowerUpType.super:
+                
+                break;
+            case PowerUpType.strength:
+                message = "Carry masks easier !";
+
                 break;
         }
+
+        FXPlayer.Instance.PlayTextMessage(collectibleTransform, Color.white, message, 3f);
     }
 
     public float bonusSpeed;
@@ -42,5 +71,6 @@ public enum PowerUpType
     gainHp,
     slow,
     speed,
-    super
+    super,
+    strength
 }

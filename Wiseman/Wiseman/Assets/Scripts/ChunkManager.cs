@@ -145,7 +145,7 @@ public class ChunkManager : MonoBehaviour
     int dropCount;
     public bool enableStartingChunks;
     bool startingChunks;
-
+    public bool inTutorial;
     public Chunk GetChunk()
     {
         Chunk returned;
@@ -157,14 +157,15 @@ public class ChunkManager : MonoBehaviour
 
         if (progression < startingChunkPools.Length && startingChunks)
         {
+            inTutorial = true;
             returned = startingChunkPools[progression].Dequeue();
             returned.type = ChunkType.starting;
             returned.poolIndex = progression;
         }
         else
         {
-
-            if(dropCount >= config.dropChunkDelayCount)
+            inTutorial = false;
+            if (dropCount >= config.dropChunkDelayCount)
             {
                 int index = Random.Range(0, dropChunkPools.Length);
                 returned = dropChunkPools[index].Dequeue();

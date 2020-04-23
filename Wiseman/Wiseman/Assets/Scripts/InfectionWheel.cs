@@ -1,4 +1,6 @@
 ﻿using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.UI;
 using DG.Tweening;
 
@@ -19,17 +21,24 @@ public class InfectionWheel : MonoBehaviour
 
     public RectTransform wedgesParent;
 
-    Image[] wedges;
+    List<Image> wedges;
 
     public void Initialize()
     {
-        wedges = new Image[InfectionManager.Instance.maxInfection];
+        wedges = new List<Image>();
         for(int i = 0; i < InfectionManager.Instance.maxInfection; i++)
         {
-            wedges[i] = Instantiate(wedgeParentPrefab, wedgesParent.transform).GetComponentInChildren<Image>();
-            wedges[i].transform.parent.GetComponent<RectTransform>().anchoredPosition += new Vector2(xDistance, 0) * i;
-            wedges[i].sprite = InfectionManager.Instance.healthyWedge;
+            GainWedge();
         }
+    }
+
+    public void GainWedge()
+    {
+        wedges.Add(Instantiate(wedgeParentPrefab, wedgesParent.transform).GetComponentInChildren<Image>());
+        wedges[wedges.Count-1].transform.parent.GetComponent<RectTransform>().anchoredPosition += new Vector2(xDistance, 0) * (wedges.Count - 1);
+        wedges[wedges.Count - 1].sprite = InfectionManager.Instance.healthyWedge;
+        wedges[wedges.Count - 1].transform.localScale = Vector3.one * 4f;
+        wedges[wedges.Count - 1].transform.DOScale(Vector3.one, 0.4f).SetEase(Ease.OutBack);
     }
 
 

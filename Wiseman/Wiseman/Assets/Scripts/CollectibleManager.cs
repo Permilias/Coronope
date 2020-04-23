@@ -52,7 +52,7 @@ public class CollectibleManager : MonoBehaviour
     public void DropAllCollectibles(Transform dropTransform)
     {
         ScoreManager.Instance.GainLivesSaved(gainMultiplierPerCollectible * masksPossessed);
-        FXPlayer.Instance.PlayTextMessage(dropTransform, Color.white, "+ " + (gainMultiplierPerCollectible * masksPossessed).ToString() + " lives !", 4f);
+        FXPlayer.Instance.PlayTextMessage(dropTransform, Color.white, "+ " + (ScoreManager.Instance.currentGain * gainMultiplierPerCollectible * masksPossessed).ToString() + " lives !", 4f);
 
         masksPossessed = 0;
 
@@ -84,6 +84,18 @@ public class CollectibleManager : MonoBehaviour
 
         masksTextMesh.text = "x" + masksPossessed.ToString();
         PlayerController.Instance.RefreshMovementValues();
+
+
+        if (collectible.mask)
+        {
+            masksPossessed++;
+        }
+        else
+        {
+
+            PowerUpManager.Instance.PowerUp(collectible.data.config.powerUpType, collectible.transform);
+        }
+
     }
 
     public CollectibleData placeholderData;
@@ -141,4 +153,5 @@ public class CollectibleConfig
 {
     public string collectibleName;
     public GameObject graphicsPrefab;
+    public PowerUpType powerUpType;
 }

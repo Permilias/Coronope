@@ -12,6 +12,11 @@ public class Collectible : MonoBehaviour
     public Transform graphicsParent;
     public GameObject graphics;
 
+    public float collectHeight;
+
+    public int forceDataIndex;
+    public bool forcesConfig;
+
     public bool mask;
 
     private void Awake()
@@ -21,7 +26,7 @@ public class Collectible : MonoBehaviour
 
     private void Update()
     {
-        transform.eulerAngles += new Vector3(0, CollectibleManager.Instance.spinningSpeed * Time.deltaTime, 0);
+        graphicsParent.transform.localEulerAngles += new Vector3(0, CollectibleManager.Instance.spinningSpeed * Time.deltaTime, 0);
     }
 
     public void Initialize(CollectibleData _data)
@@ -30,7 +35,17 @@ public class Collectible : MonoBehaviour
         CollectibleManager.Instance.currentCollectibles.Add(this);
         col.enabled = true;
         transform.localScale = Vector3.one;
-        Refresh(_data);
+
+        if(forcesConfig)
+        {
+            Refresh(CollectibleManager.Instance.dataToCollect[forceDataIndex]);
+
+        }
+        else
+        {
+            Refresh(_data);
+
+        }
 
 
     }
@@ -56,10 +71,12 @@ public class Collectible : MonoBehaviour
 
         if (graphics != null)
         {
-            graphics.transform.localScale = Vector3.one;
+            graphicsParent.gameObject.SetActive(true);
+
             graphics.gameObject.SetActive(true);
             graphics.transform.parent = graphicsParent;
             graphics.transform.localPosition = Vector3.zero;
+            graphics.transform.localScale = Vector3.one;
         }
     }
 
@@ -91,7 +108,7 @@ public class Collectible : MonoBehaviour
 
 
         graphics.transform.DOScale(Vector3.one * 1.3f, CollectibleManager.Instance.shrinkingSpeed);
-        graphics.transform.DOLocalMove(graphics.transform.localPosition + new Vector3(0, 3, 0), CollectibleManager.Instance.shrinkingSpeed).OnComplete(() =>
+        graphics.transform.DOLocalMove(graphics.transform.localPosition + new Vector3(0, collectHeight, 0), CollectibleManager.Instance.shrinkingSpeed).OnComplete(() =>
         {
             graphics.transform.DOScale(Vector3.zero, CollectibleManager.Instance.shrinkingSpeed);
             graphics.transform.DOLocalMove(graphics.transform.localPosition + new Vector3(0, 0, 0), CollectibleManager.Instance.shrinkingSpeed).OnComplete(() =>
@@ -106,7 +123,7 @@ public class Collectible : MonoBehaviour
 
     private void OnTriggerEnter(Collider collider)
     {
-        if(collider.gameObject.tag == "Player")
+        if(collider.gameObject.tag == "Player" && !collected)
         {
             Collect();
         }
