@@ -46,7 +46,9 @@ public class InfectionManager : MonoBehaviour
             ScoreManager.Instance.LooseLivesSaved(ScoreManager.Instance.currentGain);
         }
 
-        infection += amount;
+        FXPlayer.Instance.PlayFX("Infection", PlayerController.Instance.transform);
+
+infection += amount;
         if(infection >= maxInfection && GameManager.Instance.gameOngoing)
         {
             infection = maxInfection;

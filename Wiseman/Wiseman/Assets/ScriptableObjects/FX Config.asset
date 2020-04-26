@@ -20,6 +20,20 @@ MonoBehaviour:
     randomizeSize: 0
     minMaxSize: {x: 0, y: 0}
     randomizeRotation: 0
+  - fxName: Collision
+    fx: {fileID: 8847877486058885321, guid: 02a9c5a290ece30498c0a08726f5eaee, type: 3}
+    poolingAmount: 5
+    duration: 0
+    randomizeSize: 0
+    minMaxSize: {x: 0, y: 0}
+    randomizeRotation: 0
+  - fxName: Infection
+    fx: {fileID: 4618975374519819548, guid: ba97bf38fc0c9104fa4cde06f5466ea6, type: 3}
+    poolingAmount: 5
+    duration: 0
+    randomizeSize: 0
+    minMaxSize: {x: 0, y: 0}
+    randomizeRotation: 0
   textMessageEnterSpeed: 0.2
   textMessageEnterEase: 1
   textMessageDuration: 2

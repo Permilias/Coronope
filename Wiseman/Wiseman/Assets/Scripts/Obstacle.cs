@@ -130,7 +130,9 @@ public class Obstacle : MonoBehaviour
         if (vel.x == 0) vel.x = Random.Range(1f, -1f);
         PlayerController.Instance.currentVel = vel;
 
-        if(infection)
+        FXPlayer.Instance.PlayFX("Collision", point.point);
+
+        if (infection)
         {
             InfectionManager.Instance.GainInfection(1);
         }

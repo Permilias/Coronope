@@ -28,7 +28,7 @@ public class FXPlayer : MonoBehaviour
         }
     }
 
-    public void PlayFX(string fxName, Transform _transform)
+    public void PlayFX(string fxName, Vector3 _position)
     {
         bool found = false;
         for(int i = 0; i < fxPools.Length; i++)
@@ -36,7 +36,7 @@ public class FXPlayer : MonoBehaviour
             if(fxPools[i].data.fxName == fxName)
             {
                 found = true;
-                PlayFXFromPool(fxPools[i], _transform);
+                PlayFXFromPool(fxPools[i], _position);
                 break;
             }
         }
@@ -66,10 +66,10 @@ public class FXPlayer : MonoBehaviour
         }
     }
 
-    void PlayFXFromPool(FXPool pool, Transform _transform)
+    void PlayFXFromPool(FXPool pool,Vector3 _position)
     {
         FX playedFX = pool.Depool();
-        playedFX.transform.position = _transform.position;
+        playedFX.transform.position = _position;
         playedFX.Play();
     }
 
