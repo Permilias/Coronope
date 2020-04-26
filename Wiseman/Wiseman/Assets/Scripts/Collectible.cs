@@ -14,6 +14,8 @@ public class Collectible : MonoBehaviour
 
     public float collectHeight;
 
+    public Transform shiningTransform;
+
     public int forceDataIndex;
     public bool forcesConfig;
 
@@ -31,6 +33,11 @@ public class Collectible : MonoBehaviour
 
     public void Initialize(CollectibleData _data)
     {
+        if (mask)
+        {
+            shiningTransform.gameObject.SetActive(true);
+        }
+
         collected = false;
         CollectibleManager.Instance.currentCollectibles.Add(this);
         col.enabled = true;
@@ -105,13 +112,17 @@ public class Collectible : MonoBehaviour
         CollectibleManager.Instance.Collect(this);
         print("collected !");
 
+        if(mask)
+        {
+            shiningTransform.gameObject.SetActive(false);
+        }
 
 
-        graphics.transform.DOScale(Vector3.one * 1.3f, CollectibleManager.Instance.shrinkingSpeed);
-        graphics.transform.DOLocalMove(graphics.transform.localPosition + new Vector3(0, collectHeight, 0), CollectibleManager.Instance.shrinkingSpeed).OnComplete(() =>
+        graphics.transform.DOScale(Vector3.one * 1.5f, CollectibleManager.Instance.raisingSpeed);
+        graphics.transform.DOLocalMove(graphics.transform.localPosition + new Vector3(0, collectHeight, 0), CollectibleManager.Instance.raisingSpeed).OnComplete(() =>
         {
             graphics.transform.DOScale(Vector3.zero, CollectibleManager.Instance.shrinkingSpeed);
-            graphics.transform.DOLocalMove(graphics.transform.localPosition + new Vector3(0, 0, 0), CollectibleManager.Instance.shrinkingSpeed).OnComplete(() =>
+            graphics.transform.DOLocalMove(graphics.transform.localPosition, CollectibleManager.Instance.shrinkingSpeed).OnComplete(() =>
             {
                 if (!mask)
                 {

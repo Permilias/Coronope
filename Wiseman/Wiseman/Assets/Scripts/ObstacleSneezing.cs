@@ -7,11 +7,16 @@ public class ObstacleSneezing : MonoBehaviour
     Obstacle obstacle;
     public Animator anim;
 
+    private void Awake()
+    {
+        graphics = GetComponentInChildren<CharacterGraphics>();
+    }
+
     public void Initialize(Obstacle _obstacle)
     {
         obstacle = _obstacle;
         obstacle.ObstacleUpdate += SneezingUpdate;
-
+        
 
         SetWaiting();
 
@@ -22,6 +27,8 @@ public class ObstacleSneezing : MonoBehaviour
     public float delay;
     public float size;
     int phase;
+
+    CharacterGraphics graphics;
 
     bool choke;
 
@@ -42,6 +49,7 @@ public class ObstacleSneezing : MonoBehaviour
                     count = 0f;
                     phase = 1;
 
+                    if (graphics != null) graphics.SneezeFace();
                     anim.SetTrigger("startSneezing");
                     anim.speed = 1f/telegraphDuration;
                     StartTelegraph();
@@ -63,6 +71,7 @@ public class ObstacleSneezing : MonoBehaviour
             case 2:
                 if (count >= sneezingDuration / GameManager.Instance.speedMultiplier)
                 {
+                    if (graphics != null) graphics.UnsneezeFace();
                     count = 0f;
                     phase = 0;
                     anim.speed = 1f;

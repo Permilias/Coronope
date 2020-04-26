@@ -42,6 +42,7 @@ public class MusicManager : MonoBehaviour
         delay = CurrentPlayingSource().clip.length;
     }
 
+    bool startedMusic;
     private void Update()
     {
         if(CurrentPlayingSourceIndex() == 1)
@@ -50,8 +51,9 @@ public class MusicManager : MonoBehaviour
         }
 
         delay -= Time.deltaTime;
-        if(delay <= 0f)
+        if(delay <= 0f && !startedMusic)
         {
+            startedMusic = true;
             PlayMusic(1);
         }
     }
@@ -74,7 +76,7 @@ public class MusicManager : MonoBehaviour
 
     public AudioSource CurrentPlayingSource()
     {
-        AudioSource currentPlayingSource = new AudioSource();
+        AudioSource currentPlayingSource = sources[0];
 
         foreach(AudioSource source in sources)
         {

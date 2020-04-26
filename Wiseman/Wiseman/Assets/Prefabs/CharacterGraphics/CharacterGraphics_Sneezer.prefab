@@ -172,6 +172,11 @@ PrefabInstance:
       propertyPath: randomizers.Array.data[2].colors.Array.data[0].atime1
       value: 65535
       objectReference: {fileID: 0}
+    - target: {fileID: 73797276346486627, guid: 438cef3c071a72b44aa6399f3193076e,
+        type: 3}
+      propertyPath: sick
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4797734538375191700, guid: 438cef3c071a72b44aa6399f3193076e,
         type: 3}
       propertyPath: m_Name

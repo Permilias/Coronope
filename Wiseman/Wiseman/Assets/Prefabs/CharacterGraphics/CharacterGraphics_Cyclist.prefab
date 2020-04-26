@@ -1993,6 +1993,9 @@ MonoBehaviour:
   advances: 0
   canBeGirl: 0
   girlHair: {fileID: 0}
+  old: 0
+  effort: 1
+  sick: 0
   randomizers:
   - smrs:
     - {fileID: 3916288408458956478}
@@ -2054,6 +2057,7 @@ MonoBehaviour:
       m_Mode: 0
       m_NumColorKeys: 3
       m_NumAlphaKeys: 2
+    currentColor: {r: 0, g: 0, b: 0, a: 0}
   - smrs:
     - {fileID: 93403700893276820}
     - {fileID: 1437309527368721962}
@@ -2144,6 +2148,7 @@ MonoBehaviour:
       m_Mode: 0
       m_NumColorKeys: 2
       m_NumAlphaKeys: 2
+    currentColor: {r: 0, g: 0, b: 0, a: 0}
   - smrs:
     - {fileID: 4009190611296686004}
     - {fileID: 6241933937895544120}
@@ -2178,6 +2183,7 @@ MonoBehaviour:
       m_Mode: 0
       m_NumColorKeys: 2
       m_NumAlphaKeys: 2
+    currentColor: {r: 0, g: 0, b: 0, a: 0}
   - smrs:
     - {fileID: 8567066285074771502}
     - {fileID: 5570243342754876052}
@@ -2212,6 +2218,7 @@ MonoBehaviour:
       m_Mode: 0
       m_NumColorKeys: 2
       m_NumAlphaKeys: 2
+    currentColor: {r: 0, g: 0, b: 0, a: 0}
   - smrs:
     - {fileID: 7432682361331870371}
     - {fileID: 6670415167973461930}
@@ -2273,6 +2280,7 @@ MonoBehaviour:
       m_Mode: 0
       m_NumColorKeys: 2
       m_NumAlphaKeys: 2
+    currentColor: {r: 0, g: 0, b: 0, a: 0}
   - smrs: []
     mrs:
     - {fileID: 6723914517555958064}
@@ -2306,6 +2314,12 @@ MonoBehaviour:
       m_Mode: 0
       m_NumColorKeys: 2
       m_NumAlphaKeys: 2
+    currentColor: {r: 0, g: 0, b: 0, a: 0}
+  anim: {fileID: 0}
+  faceMR: {fileID: 93403700893276820}
+  faceSprites: []
+  girl: 0
+  blinking: 0
 --- !u!1 &4975144700483521890
 GameObject:
   m_ObjectHideFlags: 0

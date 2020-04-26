@@ -19,7 +19,7 @@ public class InfectionManager : MonoBehaviour
 
     public bool playerInZone;
 
-    public Sprite healthyWedge;
+    public Sprite saneWedge;
     public Sprite infectedWedge;
 
     public Color normalInfectionZoneColor;
@@ -35,6 +35,10 @@ public class InfectionManager : MonoBehaviour
     public Color infectionMessageColor;
     public float infectionMessageHeight;
 
+
+    public Color saneColor;
+    public Color infectedColor;
+
     public void GainInfection(int amount)
     {
         if(amount >= 0)
@@ -43,10 +47,11 @@ public class InfectionManager : MonoBehaviour
         }
 
         infection += amount;
-        if(infection >= maxInfection)
+        if(infection >= maxInfection && GameManager.Instance.gameOngoing)
         {
             infection = maxInfection;
             GameManager.Instance.LooseGame();
+            InfectionWheel.Instance.RefreshWedgeInfection();
             return;
         }
         if (infection < 0) infection = 0;

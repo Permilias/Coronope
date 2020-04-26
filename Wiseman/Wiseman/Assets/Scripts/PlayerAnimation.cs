@@ -8,6 +8,82 @@ public class PlayerAnimation : MonoBehaviour
 
     public GameObject stunStars;
 
+    public GameObject leftHand;
+    public GameObject rightHand;
+    public GameObject leftBagHand;
+    public GameObject rightBagHand;
+
+    public GameObject[] bags;
+
+    public int[] bagsThresholds;
+
+    
+    public void Orient()
+    {
+
+    }
+
+    public void RefreshBags()
+    {
+        int currentThreshold = -1;
+        for(int i = 0;i  < bagsThresholds.Length; i++)
+        {
+            if(bagsThresholds[i] <= CollectibleManager.Instance.masksPossessed)
+            {
+                currentThreshold = i;
+            }
+        }
+
+        if (currentThreshold >= bags.Length) currentThreshold = bags.Length - 1;
+
+        if(currentThreshold >= 0)
+        {
+
+            leftHand.SetActive(true);
+            leftBagHand.SetActive(true);
+            if (currentThreshold >= 1)
+            {
+
+                rightHand.SetActive(true);
+                rightBagHand.SetActive(true);
+            }
+            else
+            {
+
+                rightHand.SetActive(false);
+                rightBagHand.SetActive(false);
+            }
+        }
+        else
+        {
+
+            leftHand.SetActive(false);
+            leftBagHand.SetActive(false);
+        }
+
+        leftHand.SetActive(true);
+        leftBagHand.SetActive(false);
+        rightHand.SetActive(true);
+        rightBagHand.SetActive(false);
+        
+
+        for (int i = 0; i < bags.Length; i++)
+        {
+
+
+            if (i <= currentThreshold)
+            {
+                bags[i].SetActive(true);
+            }
+            else
+            {
+                bags[i].SetActive(false);
+
+            }
+
+
+        }
+    }
 
     public CharacterGraphics graphics;
 
@@ -25,7 +101,7 @@ public class PlayerAnimation : MonoBehaviour
     public void Initialize()
     {
         graphics.Initialize();
-
+        RefreshBags();
     }
 
     public void SetStreet()

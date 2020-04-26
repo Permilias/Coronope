@@ -129,6 +129,11 @@ public class Obstacle : MonoBehaviour
         vel.x *= xMult;
         if (vel.x == 0) vel.x = Random.Range(1f, -1f);
         PlayerController.Instance.currentVel = vel;
+
+        if(infection)
+        {
+            InfectionManager.Instance.GainInfection(1);
+        }
     }
 
     private void Update()
@@ -151,11 +156,15 @@ public class Obstacle : MonoBehaviour
         }
 
         if (!scores) return;
-
+        if (infection)
+        {
+            if (infection.zone.infected) return;
+        }
         if (gaveScore) return;
 
         if(transform.position.z < PlayerController.Instance.transform.position.z)
         {
+
             gaveScore = true;
             ScoreManager.Instance.GainLivesSaved(1);
         }

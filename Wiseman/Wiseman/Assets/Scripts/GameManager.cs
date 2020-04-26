@@ -75,6 +75,7 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
+        gameOngoing = true;
         speedMultiplier = baseSpeedMult;
         CameraAnimator.Instance.SetGameplay();
         PlayerAnimation.Instance.TurnToStreet();
@@ -84,7 +85,7 @@ public class GameManager : MonoBehaviour
 
     public void GoToMenu()
     {
-        CanvasAnim_GameOver.Instance.gameObject.SetActive(false);
+        gameOngoing = false;
         speedMultiplier = 0;
         CameraAnimator.Instance.SetCinematic();
         PlayerAnimation.Instance.TurnToCamera();
@@ -93,19 +94,24 @@ public class GameManager : MonoBehaviour
 
     public void StartMenu()
     {
-        CanvasAnim_GameOver.Instance.gameObject.SetActive(false);
+        CanvasAnim_GameOver.Instance.Hide();
         GoToMenu();
         CanvasAnim_Game.Instance.Hide();
         CanvasAnim_StartMenu.Instance.Display();
     }
 
+    public bool gameOngoing;
     public void LooseGame()
     {
-        CanvasAnim_GameOver.Instance.gameObject.SetActive(true);
-        MusicManager.Instance.CurrentPlayingSource().Stop();
         GoToMenu();
         PlayerAnimation.Instance.EndSneezing();
-        CameraAnimator.Instance.transform.DOMove(PlayerController.Instance.transform.position, 0.3f);
+
+        CameraAnimator.Instance.transform.DOMove(PlayerController.Instance.transform.position, 0.3f).OnComplete(() =>
+        {
+            CanvasAnim_GameOver.Instance.Display();
+        });
+
+        MusicManager.Instance.CurrentPlayingSource().Stop();
     }
 
     public void Restart()

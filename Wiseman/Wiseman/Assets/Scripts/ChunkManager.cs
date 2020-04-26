@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ChunkManager : MonoBehaviour
 {
@@ -30,6 +31,13 @@ public class ChunkManager : MonoBehaviour
 
     Transform[] chunkParents;
     Chunk[] currentChunks;
+
+    public Toggle toggle;
+
+    public void ChangeTutorial()
+    {
+        enableStartingChunks = toggle.isOn;
+    }
 
     public void Initialize()
     {

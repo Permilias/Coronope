@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class InfectionZone : MonoBehaviour
 {
-    public MeshRenderer groundTextureMR;
+    public SpriteRenderer groundSR;
     public CapsuleCollider col;
     public float size;
     public bool infected;
@@ -16,13 +16,13 @@ public class InfectionZone : MonoBehaviour
         size = _size;
         transform.localScale = Vector3.one * size;
         //col.radius = size / 2f;
-        groundTextureMR.material = InfectionManager.Instance.normalProjectorMaterial;
+        groundSR.color = InfectionManager.Instance.normalInfectionZoneColor;
     }
 
     public void Infect()
     {
         infected = true;
-        groundTextureMR.material = InfectionManager.Instance.infectedProjectorMaterial;
+        groundSR.color = InfectionManager.Instance.infectedZoneColor;
     }
 
     public bool playerInside;

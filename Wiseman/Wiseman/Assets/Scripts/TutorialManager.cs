@@ -23,6 +23,7 @@ public class TutorialManager : MonoBehaviour
 
     public void PlayTutorial(int index, float duration)
     {
+        if (!ChunkManager.Instance.enableStartingChunks) return;
         DeactivateAllTutorials();
         currentDuration = duration;
         currentIndex = index;

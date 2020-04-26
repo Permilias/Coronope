@@ -10,6 +10,7 @@ public class CollectibleManager : MonoBehaviour
 
     public float spinningSpeed;
 
+    public float raisingSpeed;
     public float shrinkingSpeed;
 
     public int masksPossessed;
@@ -58,7 +59,7 @@ public class CollectibleManager : MonoBehaviour
 
         PlayerController.Instance.RefreshMovementValues();
         masksTextMesh.text = "x" + masksPossessed.ToString();
-
+        PlayerAnimation.Instance.RefreshBags();
 
     }
 
@@ -89,6 +90,7 @@ public class CollectibleManager : MonoBehaviour
         if (collectible.mask)
         {
             masksPossessed++;
+            PlayerAnimation.Instance.RefreshBags();
         }
         else
         {
